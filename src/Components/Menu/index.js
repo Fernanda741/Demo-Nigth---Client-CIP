@@ -1,38 +1,59 @@
 import React from 'react'
 import styled from 'styled-components'
+import CIPLogo from '../../Img/cip-logo.png'
 
-const Menu = styled.div`
-    width: 100px;
-    height: 100px;
-    background-color: pink;
+const CentralContainer = styled.div`
+    width: 100%;
 `
 
-const MainDiv = styled.section`
-    background-color: white;
+const NavbarMenu = styled.nav`
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+`
+
+const ListMenu = styled.div`
+    width: 350px;
     display: flex;
     align-items: center;
     justify-content: center;
+    justify-content: space-between;
 `
+
+const ClientBar = styled.div`
+    
+`
+
+const ImgLogo = styled.img `
+    width: 150px;
+`
+
+
+
 
 export default function ComponentMenu () {
     return (
         <>
-          <MainDiv>
-            <div>
+        <CentralContainer>
+            <NavbarMenu>
+                <ImgLogo src= {CIPLogo} alt="LogoCip" />
+                <ListMenu>
+                    <ClientBar>
+                        <p>Cliente</p>
+                        <ul>
+                            <li>Cadastrar</li>
+                            <li>Consultar</li>
+                        </ul>
+                    </ClientBar>
+                    <div>
+                        <p>Conta Corrente</p>
+                    </div>
+                </ListMenu>
+            </NavbarMenu>
+        </CentralContainer>
+            
 
-            </div>
-            <Menu>
-                <h4>Cadastrar</h4>
-                <ul>
-                    <li>
-                        <p>Adicionar Cliente</p>
-                    </li>
-                    <li>
-                        <p>Consultar Cliente</p>
-                    </li>
-                </ul>
-            </Menu>
-          </MainDiv>
         </>
     )
 }
