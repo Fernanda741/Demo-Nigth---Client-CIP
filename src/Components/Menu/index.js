@@ -1,4 +1,5 @@
 import React from 'react'
+import { useNavigate } from 'react-router-dom'
 import styled from 'styled-components'
 import CIPLogo from '../../Img/cip-logo.png'
 
@@ -29,10 +30,22 @@ const ImgLogo = styled.img `
     width: 150px;
 `
 
+const DropButton = styled.button `
+    border: none;
+    outline: none;
+`
+
 
 
 
 export default function ComponentMenu () {
+    const navigate = useNavigate ();
+
+    const handleSubmit = async (e) => {
+        e.preventDefault ();
+        navigate("/")
+    }
+
     return (
         <>
         <CentralContainer>
@@ -40,14 +53,14 @@ export default function ComponentMenu () {
                 <ImgLogo src= {CIPLogo} alt="LogoCip" />
                 <ListMenu>
                     <ClientBar>
-                        <p>Cliente</p>
-                        <ul>
-                            <li>Cadastrar</li>
+                        <DropButton>Cliente</DropButton>
+                        <div>
+                            <a href>Cadastrar</a>
                             <li>Consultar</li>
-                        </ul>
+                        </div>
                     </ClientBar>
                     <div>
-                        <p>Conta Corrente</p>
+                        <button>Conta Corrente</button>
                     </div>
                 </ListMenu>
             </NavbarMenu>
