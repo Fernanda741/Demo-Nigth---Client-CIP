@@ -4,9 +4,12 @@ import FirstPage from '../../pages/FirstPage'
 
 
 export default function MainRoutes () {
+    return(
     <BrowserRouter>
         <Routes>
             <Route exact path= "/" element = {<FirstPage />} />            
         </Routes>
     </BrowserRouter>
+    )
+    
 }
