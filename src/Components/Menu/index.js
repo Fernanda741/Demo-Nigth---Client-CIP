@@ -43,11 +43,11 @@ export default function ComponentMenu () {
                         <button className="dropbtn">CLIENTE</button>
                         <div className="dropdown-content">
                             <a href="/register">Cadastrar</a>
-                            <a href="/">Consultar</a>
+                            <a href="/listclients">Consultar</a>
                         </div>                        
                     </div>
                     <div>
-                        <button className="dropbtn2">CONTA CORRENTE!</button>
+                        <button className="dropbtn2">CONTA CORRENTE</button>
                     </div> 
                 </div>
             </NavbarMenu>
