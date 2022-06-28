@@ -5,6 +5,49 @@ import { useForm } from "react-hook-form";
 import { CreateUser } from "../../api";
 import { useState } from "react";
 import InputMask from "react-input-mask";
+import styled from "styled-components";
+import ComponentMenu from "../../Components/Menu";
+import BannerImg from "../../Img/banner-register.png";
+
+
+const FormSection = styled.form`
+  /* @import url('https://fonts.googleapis.com/css2?family=Anton&family=Inder&family=Montserrat:wght@300&display=swap'); */
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  background-color: #F3F3F3;
+  > div{
+    display: flex;
+    flex-direction: column;
+    padding: 150px;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    width: 100%;
+
+    > label{
+     margin-bottom: 10px;
+     margin-top: 3px;
+     border-color: black;
+     font-family: "Montserrat";
+     font-weight: bolder;
+     font-size: 15px;
+    } 
+
+   > input {
+    border-radius: 3px;
+    width: 25vw;
+    padding: 10px;
+
+   }
+  }
+  
+`;
+
+const Img = styled.img `
+width: 100%;
+
+`
+
 
 
 const Register = () => {
@@ -38,81 +81,89 @@ const Register = () => {
 
   return (
     <section>
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <Input
-          label="Nome:"
-          type="text"
-          placeholder="Nome Completo"
-          {...register("nome")}
-        />
+      <ComponentMenu />
+      <Img src={BannerImg} alt="Banner Image"/>
+      <h3>DADOS PESSOAIS</h3>
+      <FormSection onSubmit={handleSubmit(onSubmit)}>
+        <div>
+          <Input
+            label="Nome:"
+            type="text"
+            placeholder="Nome Completo"
+            {...register("nome")}
+          />
 
-        <Input
-          label="Telefone:"
-          type="tel"
-          placeholder="(xx) x xxxxxxxx"
-          {...register("telefone")}
-        />
+          <Input
+            label="Telefone:"
+            type="tel"
+            placeholder="(xx) x xxxxxxxx"
+            {...register("telefone")}
+          />
 
-        <Input
-          label="Data de Nascimento:"
-          type="date"
-          {...register("dataNasc")}
-        />
-        <label>CPF:</label>
-        <InputMask
-          label="CPF:"
-          type="text"
-          placeholder="000.000.000-00"
-          {...register("cpf")}
-          mask= "999.999.99-99"
-        />
-        <Input
-          label="Email:"
-          type="email"
-          placeholder="user@user.com"
-          {...register("email")}
-        />
+          <Input
+            label="Data de Nascimento:"
+            type="date"
+            {...register("dataNasc")}
+          />
+          <label>CPF:</label>
+          <InputMask
+            label="CPF:"
+            type="text"
+            placeholder="000.000.000-00"
+            {...register("cpf")}
+            mask="999.999.99-99"
+          />
+          <Input
+            label="Email:"
+            type="email"
+            placeholder="user@user.com"
+            {...register("email")}
+          />
+        </div>
 
         {/*  */}
-        <Input
-          label="Cep:"
-          type="text"
-          placeholder="Cep"
-          {...register("cep", { onBlur: checkCEP })}
-        />
-        <Input
-          label="Municipio"
-          type="text"
-          placeholder="Municipio"
-          {...register("municipio")}
-        />
-        <Input
-          label="Bairro:"
-          type="text"
-          placeholder="Bairro"
-          {...register("bairro")}
-        />
-        <Input
-          label="Rua:"
-          type="text"
-          placeholder="Rua"
-          {...register("endereco")}
-        />
-        <Input
-          label="Numero:"
-          type="number"
-          placeholder="Nº"
-          {...register("numero")}
-        />
-        <Input
-          label="Complemento:"
-          type="text"
-          placeholder="Complemento"
-          {...register("complem")}
-        />
-        <Input label="UF:" type="text" placeholder="UF" {...register("uf")} />
-        <Button title="Cadastrar" type="submit" />
-      </form>
+
+        <div>
+          <Input
+            label="Cep:"
+            type="text"
+            placeholder="Cep"
+            {...register("cep", { onBlur: checkCEP })}
+          />
+          <Input
+            label="Municipio"
+            type="text"
+            placeholder="Municipio"
+            {...register("municipio")}
+          />
+          <Input
+            label="Bairro:"
+            type="text"
+            placeholder="Bairro"
+            {...register("bairro")}
+          />
+          <Input
+            label="Rua:"
+            type="text"
+            placeholder="Rua"
+            {...register("endereco")}
+          />
+          <Input
+            label="Numero:"
+            type="number"
+            placeholder="Nº"
+            {...register("numero")}
+          />
+          <Input
+            label="Complemento:"
+            type="text"
+            placeholder="Complemento"
+            {...register("complem")}
+          />
+          <Input label="UF:" type="text" placeholder="UF" {...register("uf")} />
+          <Button title="Cadastrar" type="submit" />
+        </div>
+      </FormSection>
     </section>
   );
 };
