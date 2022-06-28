@@ -47,7 +47,7 @@ export default function ComponentMenu () {
                         </div>                        
                     </div>
                     <div>
-                        <button className="dropbtn2">CONTA CORRENTE</button>
+                        <button className="dropbtn2">CONTA CORRENTE!</button>
                     </div> 
                 </div>
             </NavbarMenu>
