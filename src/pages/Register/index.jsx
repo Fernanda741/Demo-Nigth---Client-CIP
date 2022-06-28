@@ -4,6 +4,8 @@ import Button from "../../Components/Button";
 import { useForm } from "react-hook-form";
 import { CreateUser } from "../../api";
 import { useState } from "react";
+import InputMask from "react-input-mask";
+
 
 const Register = () => {
   const { register, handleSubmit, setValue } = useForm();
@@ -56,11 +58,13 @@ const Register = () => {
           type="date"
           {...register("dataNasc")}
         />
-        <Input
+        <label>CPF:</label>
+        <InputMask
           label="CPF:"
           type="text"
           placeholder="000.000.000-00"
           {...register("cpf")}
+          mask= "999.999.99-99"
         />
         <Input
           label="Email:"
