@@ -1,15 +1,17 @@
 import { useEffect, useState } from "react";
-import { Client } from "../../Components/Client/Client";
+import { Client } from "../../Components/Client";
+import { getClients } from "../../api/index";
 
-export const AllClients = () => {
+
+export const ListClients = () => {
   const[clients, setClients] = useState([]);
 
   useEffect(() =>{
-   getClients();
+   getClients()
     .then((response) => response.json())
     .then((data) => {
-
-    })
+    setClients(data.content);
+    },[setClients])
   });  
 
   return (
@@ -24,7 +26,7 @@ export const AllClients = () => {
                   nome={client.nome}
                   cpf={client.cpf}
                     >
-                </Client>;
+                </Client>
             </>
             );   
           })}

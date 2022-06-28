@@ -1,0 +1,18 @@
+.container-clients{
+  list-style-type: none;
+}
+
+.client-info{
+  background-color: #3A4245;
+  list-style-type: none;
+  color: #ffffff;
+}
+.btn-edit{
+  background-color: #ffffff;
+  border-radius: 3px; 
+}
+
+.btn-delete{
+  border-radius: 3px;
+  background-color: rgb(206, 30, 30);
+}
