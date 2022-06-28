@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Client } from "../../Components/Client";
-import { getClients } from "../../api/index";
+import { deleteClient, getClients } from "../../api/index";
+import Button from "../../Components/Button";
 
 
 export const ListClients = () => {
@@ -13,6 +14,10 @@ export const ListClients = () => {
     setClients(data.content);
     },[setClients])
   });  
+
+  const handleDeleteClient = (clientId) => {
+       deleteClient(clientId);
+  }
 
   return (
     <>
@@ -31,6 +36,17 @@ export const ListClients = () => {
                   municipio={client.municipio}
                   uf={client.uf}
                     >
+                  <Button
+                    type="submit"
+                    className="btn-edit"
+                    title="Editar"
+                  />
+                  <Button
+                    type="submit"
+                    title="Excluir"
+                    className="btn-delete"
+                    onClick={()=>handleDeleteClient(client.id)}
+                  />
                 </Client>
             </>
             );   

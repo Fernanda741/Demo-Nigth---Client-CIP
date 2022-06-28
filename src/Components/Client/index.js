@@ -1,7 +1,6 @@
-import Button from "../Button"
 import "./style.css";
 
-export const Client = ({id, bairro, cep, codigo, complem, cpf, dataNasc, email, endereco, municipio, nome, numero, telefone, uf, onClick }) => {
+export const Client = ({id, bairro, cep, codigo, complem, cpf, dataNasc, email, endereco, municipio, nome, numero, telefone, uf, children}) => {
   return (
     <ul className="container-client">
       <li className="client-info">
@@ -19,17 +18,7 @@ export const Client = ({id, bairro, cep, codigo, complem, cpf, dataNasc, email, 
           <p>{municipio}</p>
           <p>{telefone}</p>
           <p>{uf}</p>
-
-        <Button
-          type="submit"
-          className="btn-edit"
-          title="Editar"
-        />
-        <Button
-          type="submit"
-          title="Excluir"
-          className="btn-delete"
-        />
+       {children} 
       </li>
     </ul>
   )
