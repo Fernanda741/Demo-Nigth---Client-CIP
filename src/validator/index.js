@@ -13,3 +13,6 @@ export function validarCpf(cpf) {
     10;
   return rest(10) === newCpf[9] && rest(11) === newCpf[10];
 }
+
+export const emailRegExp =
+  /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;

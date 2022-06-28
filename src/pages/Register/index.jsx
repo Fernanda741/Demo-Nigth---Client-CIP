@@ -3,17 +3,53 @@ import { Input } from "../../Components/Input";
 import Button from "../../Components/Button";
 import { useForm } from "react-hook-form";
 import { CreateUser } from "../../api";
-import { validarCpf } from "../../Components/validator";
+import { validarCpf, emailRegExp } from "../../validator";
+// import InputMask from "react-input-mask";
+
+import styled from "styled-components";
+import ComponentMenu from "../../Components/Menu";
+import BannerImg from "../../Img/banner-register.png";
+
+const FormSection = styled.form`
+  /* @import url('https://fonts.googleapis.com/css2?family=Anton&family=Inder&family=Montserrat:wght@300&display=swap'); */
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  background-color: #f3f3f3;
+  > div {
+    display: flex;
+    flex-direction: column;
+    padding: 150px;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    width: 100%;
+
+    > label {
+      margin-bottom: 10px;
+      margin-top: 3px;
+      border-color: black;
+      font-family: "Montserrat";
+      font-weight: bolder;
+      font-size: 15px;
+    }
+
+    > input {
+      border-radius: 3px;
+      width: 25vw;
+      padding: 10px;
+    }
+  }
+`;
+
+const Img = styled.img`
+  width: 100%;
+`;
 
 const Register = () => {
-  const {
-    register,
-    handleSubmit,
-    setValue,
-    formState: { errors },
-  } = useForm();
+  const { register, handleSubmit, setValue } = useForm();
 
   const onSubmit = (data) => {
+    console.log("teste");
     CreateUser(data).then((response) => {
       if (response.status === 200) {
         return response.json();
@@ -39,101 +75,97 @@ const Register = () => {
 
   return (
     <section>
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <Input
-          label="Nome:"
-          type="text"
-          placeholder="Nome Completo"
-          {...register("nome", { required: true })}
-        />
-        {errors.nome && <p>Por favor digite seu nome</p>}
+      <ComponentMenu />
+      <Img src={BannerImg} alt="Banner Image" />
+      <h3>DADOS PESSOAIS</h3>
+      <FormSection onSubmit={handleSubmit(onSubmit)}>
+        <div>
+          <Input
+            label="Nome:"
+            type="text"
+            placeholder="Nome Completo"
+            {...register("nome", { required: true })}
+          />
+          <Input
+            label="Telefone:"
+            type="tel"
+            placeholder="(xx) x xxxxxxxx"
+            {...register("telefone", { required: true })}
+          />
 
-        <Input
-          label="Telefone:"
-          type="tel"
-          placeholder="(xx) x xxxxxxxx"
-          {...register("telefone")}
-        />
+          <Input
+            label="Data de Nascimento:"
+            type="date"
+            {...register("dataNasc", { required: true })}
+          />
 
-        <Input
-          label="Data de Nascimento:"
-          type="date"
-          {...register("dataNasc")}
-        />
-        <Input
-          label="CPF:"
-          type="text"
-          placeholder="000.000.000-00"
-          {...register("cpf", {
-            require: true,
-            validate: validarCpf,
-          })}
-        />
-        {errors.cpf && <p>Cpf Invalido</p>}
-        <Input
-          label="Email:"
-          type="email"
-          placeholder="user@user.com"
-          {...register("email", {
-            required: true,
-            pattern:
-              /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
-          })}
-        />
-        {errors.email && <p>Por favor digite seu email</p>}
-
-        {/*  */}
-        <Input
-          label="Cep:"
-          type="text"
-          placeholder="Cep"
-          {...register("cep", { onBlur: checkCEP, required: true })}
-        />
-        {errors.cep && <p>Por favor digite seu cep</p>}
-        <Input
-          label="Municipio"
-          type="text"
-          placeholder="Municipio"
-          {...register("municipio", { required: true })}
-        />
-        {errors.municipio && <p>Por favor digite seu Municipio</p>}
-        <Input
-          label="Bairro:"
-          type="text"
-          placeholder="Bairro"
-          {...register("bairro", { required: true })}
-        />
-        {errors.bairro && <p>Por favor digite seu Municipio</p>}
-        <Input
-          label="Rua:"
-          type="text"
-          placeholder="Rua"
-          {...register("endereco", { required: true })}
-        />
-        {errors.endereco && <p>Por favor digite seu Municipio</p>}
-        <Input
-          label="Numero:"
-          type="number"
-          placeholder="Nº"
-          {...register("numero", { required: true })}
-        />
-        {errors.numero && <p>Por favor digite seu Municipio</p>}
-        <Input
-          label="Complemento:"
-          type="text"
-          placeholder="Complemento"
-          {...register("complem", { required: true })}
-        />
-        {errors.complem && <p>Por favor digite seu complemento</p>}
-        <Input
-          label="UF:"
-          type="text"
-          placeholder="UF"
-          {...register("uf", { required: true })}
-        />
-        {errors.uf && <p>Por favor digite sua UF</p>}
-        <Button title="Cadastrar" type="submit" />
-      </form>
+          <label>CPF:</label>
+          <Input
+            label="CPF:"
+            type="text"
+            placeholder="000.000.000-00"
+            mask="999.999.99-99"
+            {...register("cpf", {
+              required: true,
+              validate: validarCpf,
+            })}
+          />
+          <Input
+            label="Email:"
+            type="email"
+            placeholder="user@user.com"
+            {...register("email", {
+              required: true,
+              pattern: emailRegExp,
+            })}
+          />
+        </div>
+        <div>
+          <Input
+            label="Cep:"
+            type="text"
+            placeholder="Cep"
+            {...register("cep", { onBlur: checkCEP, required: true })}
+          />
+          <Input
+            label="Municipio"
+            type="text"
+            placeholder="Municipio"
+            {...register("municipio", { required: true })}
+          />
+          <Input
+            label="Bairro:"
+            type="text"
+            placeholder="Bairro"
+            {...register("bairro", { required: true })}
+          />
+          <Input
+            label="Rua:"
+            type="text"
+            placeholder="Rua"
+            {...register("endereco", { required: true })}
+          />
+          <Input
+            label="Numero:"
+            type="number"
+            placeholder="Nº"
+            {...register("numero", { required: true })}
+          />
+          <Input
+            label="Complemento:"
+            type="text"
+            placeholder="Complemento"
+            {...register("complem")}
+          />
+          <Input
+            label="UF:"
+            type="text"
+            placeholder="UF"
+            {...register("uf", { required: true })}
+          />
+          <Button title="Cadastrar" type="submit" />
+        </div>
+      </FormSection>
     </section>
   );
 };
