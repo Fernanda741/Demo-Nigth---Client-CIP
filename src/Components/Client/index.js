@@ -19,15 +19,17 @@ export const Client = ({id, bairro, cep, codigo, complem, cpf, dataNasc, email, 
           <p>{municipio}</p>
           <p>{telefone}</p>
           <p>{uf}</p>
-          <Button
-            type="submit"
-            className="btn-edit"
-            onClick={onClick}
-          >Editar</Button>
-          <Button
+
+        <Button
           type="submit"
+          className="btn-edit"
+          title="Editar"
+        />
+        <Button
+          type="submit"
+          title="Excluir"
           className="btn-delete"
-          onClick={onClick}>Excluir</Button>
+        />
       </li>
     </ul>
   )
