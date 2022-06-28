@@ -3,20 +3,20 @@ import { Input } from "../../Components/Input";
 import Button from "../../Components/Button";
 import { useForm } from "react-hook-form";
 import { CreateUser } from "../../api";
-import { useState } from "react";
-import InputMask from "react-input-mask";
+import { validarCpf, emailRegExp } from "../../validator";
+// import InputMask from "react-input-mask";
+
 import styled from "styled-components";
 import ComponentMenu from "../../Components/Menu";
 import BannerImg from "../../Img/banner-register.png";
-
 
 const FormSection = styled.form`
   /* @import url('https://fonts.googleapis.com/css2?family=Anton&family=Inder&family=Montserrat:wght@300&display=swap'); */
   display: flex;
   width: 100%;
   justify-content: center;
-  background-color: #F3F3F3;
-  > div{
+  background-color: #f3f3f3;
+  > div {
     display: flex;
     flex-direction: column;
     padding: 150px;
@@ -24,36 +24,32 @@ const FormSection = styled.form`
     padding-bottom: 0px;
     width: 100%;
 
-    > label{
-     margin-bottom: 10px;
-     margin-top: 3px;
-     border-color: black;
-     font-family: "Montserrat";
-     font-weight: bolder;
-     font-size: 15px;
-    } 
+    > label {
+      margin-bottom: 10px;
+      margin-top: 3px;
+      border-color: black;
+      font-family: "Montserrat";
+      font-weight: bolder;
+      font-size: 15px;
+    }
 
-   > input {
-    border-radius: 3px;
-    width: 25vw;
-    padding: 10px;
-
-   }
+    > input {
+      border-radius: 3px;
+      width: 25vw;
+      padding: 10px;
+    }
   }
-  
 `;
 
-const Img = styled.img `
-width: 100%;
-
-`
-
-
+const Img = styled.img`
+  width: 100%;
+`;
 
 const Register = () => {
   const { register, handleSubmit, setValue } = useForm();
 
   const onSubmit = (data) => {
+    console.log("teste");
     CreateUser(data).then((response) => {
       if (response.status === 200) {
         return response.json();
@@ -77,12 +73,10 @@ const Register = () => {
       });
   };
 
-  // "codigo": "48", verificar na documentação sobre mascaras e como extrair o codigo do telefone
-
   return (
     <section>
       <ComponentMenu />
-      <Img src={BannerImg} alt="Banner Image"/>
+      <Img src={BannerImg} alt="Banner Image" />
       <h3>DADOS PESSOAIS</h3>
       <FormSection onSubmit={handleSubmit(onSubmit)}>
         <div>
@@ -90,69 +84,72 @@ const Register = () => {
             label="Nome:"
             type="text"
             placeholder="Nome Completo"
-            {...register("nome")}
+            {...register("nome", { required: true })}
           />
-
           <Input
             label="Telefone:"
             type="tel"
             placeholder="(xx) x xxxxxxxx"
-            {...register("telefone")}
+            {...register("telefone", { required: true })}
           />
 
           <Input
             label="Data de Nascimento:"
             type="date"
-            {...register("dataNasc")}
+            {...register("dataNasc", { required: true })}
           />
+
           <label>CPF:</label>
-          <InputMask
+          <Input
             label="CPF:"
             type="text"
             placeholder="000.000.000-00"
-            {...register("cpf")}
             mask="999.999.99-99"
+            {...register("cpf", {
+              required: true,
+              validate: validarCpf,
+            })}
           />
           <Input
             label="Email:"
             type="email"
             placeholder="user@user.com"
-            {...register("email")}
+            {...register("email", {
+              required: true,
+              pattern: emailRegExp,
+            })}
           />
         </div>
-
-        {/*  */}
-
         <div>
           <Input
             label="Cep:"
             type="text"
             placeholder="Cep"
-            {...register("cep", { onBlur: checkCEP })}
+            {...register("cep", { onBlur: checkCEP, required: true })}
           />
           <Input
             label="Municipio"
             type="text"
             placeholder="Municipio"
-            {...register("municipio")}
+            {...register("municipio", { required: true })}
           />
           <Input
             label="Bairro:"
             type="text"
             placeholder="Bairro"
-            {...register("bairro")}
+            {...register("bairro", { required: true })}
           />
           <Input
             label="Rua:"
             type="text"
             placeholder="Rua"
-            {...register("endereco")}
+            {...register("endereco", { required: true })}
           />
           <Input
             label="Numero:"
             type="number"
             placeholder="Nº"
-            {...register("numero")}
+            {...register("numero", { required: true })}
           />
           <Input
             label="Complemento:"
@@ -160,7 +157,12 @@ const Register = () => {
             placeholder="Complemento"
             {...register("complem")}
           />
-          <Input label="UF:" type="text" placeholder="UF" {...register("uf")} />
+          <Input
+            label="UF:"
+            type="text"
+            placeholder="UF"
+            {...register("uf", { required: true })}
+          />
           <Button title="Cadastrar" type="submit" />
         </div>
       </FormSection>
