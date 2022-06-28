@@ -11,3 +11,12 @@ export const CreateUser = (data) => {
     body: JSON.stringify(data),
   });
 };
+
+export const getClients = () => {
+  return fetch("https://bank-services-challenge.herokuapp.com/api/v1/cliente",{
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+    }
+  })
+};
