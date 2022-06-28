@@ -1,0 +1,58 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Inder&family=Montserrat:wght@200&display=swap');
+
+
+.dropbtn {
+    background-color: white;
+    color: black;
+    padding: 16px;
+    font-size: 24px;
+    border: none;
+    cursor: pointer;
+    font-family: 'Montserrat', sans-serif;
+  }
+  
+  .dropbtn2 {
+    background-color: white;
+    color: black;
+    padding: 16px;
+    font-size: 24px;
+    border: none;
+    cursor: pointer;
+    font-family: 'Montserrat', sans-serif;
+  }
+
+  .dropbtn2:hover {
+    background-color: #c4c4c4;
+  }
+  
+   .dropdown {
+   margin-right: 100px;
+  } 
+  
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    transition: 1s;
+  }
+  
+  .dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+  }
+  
+  .dropdown-content a:hover {background-color: #f1f1f1}
+  
+  .dropdown:hover .dropdown-content {
+    display: block;
+  }
+  
+  .dropdown:hover .dropbtn {
+    background-color: #c4c4c4;
+  }

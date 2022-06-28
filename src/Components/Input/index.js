@@ -1,13 +1,20 @@
-import React from 'react'
+import React from "react";
 
-export default function Input ({type, value, placeholder, onChange, name}) {
-    return(
-        <>
-            <input type= {type}
-            Value={value}
-            placeholder={placeholder}
-            onChange={onChange}
-            name={name}/>
-        </>
-    )
-}
+export const Input = React.forwardRef(
+  ({ onChange, label, register, required, onBlur, type, ...props }, ref) => {
+    return (
+      <>
+        <label>{label}</label>
+        <input
+          register={register}
+          onBlur={onBlur}
+          required={required}
+          onChange={onChange}
+          ref={ref}
+          type={type}
+          {...props}
+        />
+      </>
+    );
+  }
+);

@@ -1,6 +1,8 @@
 import React from 'react'
+import { useNavigate } from 'react-router-dom'
 import styled from 'styled-components'
 import CIPLogo from '../../Img/cip-logo.png'
+import './style.css'
 
 const CentralContainer = styled.div`
     width: 100%;
@@ -11,45 +13,43 @@ const NavbarMenu = styled.nav`
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-`
-
-const ListMenu = styled.div`
-    width: 350px;
-    display: flex;
     align-items: center;
-    justify-content: center;
-    justify-content: space-between;
-`
-
-const ClientBar = styled.div`
-    
+    > div{
+        display: flex;
+        margin-right: 150px;
+    }
 `
 
 const ImgLogo = styled.img `
-    width: 150px;
+    width: 180px;
 `
 
 
-
-
 export default function ComponentMenu () {
+    const navigate = useNavigate ();
+
+    const handleSubmit = async (e) => {
+        e.preventDefault ();
+        navigate("/register")
+    }
+
     return (
         <>
         <CentralContainer>
             <NavbarMenu>
                 <ImgLogo src= {CIPLogo} alt="LogoCip" />
-                <ListMenu>
-                    <ClientBar>
-                        <p>Cliente</p>
-                        <ul>
-                            <li>Cadastrar</li>
-                            <li>Consultar</li>
-                        </ul>
-                    </ClientBar>
-                    <div>
-                        <p>Conta Corrente</p>
+                <div>
+                    <div className="dropdown">
+                        <button className="dropbtn">CLIENTE</button>
+                        <div className="dropdown-content">
+                            <a href="/register">Cadastrar</a>
+                            <a href="/">Consultar</a>
+                        </div>                        
                     </div>
-                </ListMenu>
+                    <div>
+                        <button className="dropbtn2">CONTA CORRENTE!</button>
+                    </div> 
+                </div>
             </NavbarMenu>
         </CentralContainer>
             
