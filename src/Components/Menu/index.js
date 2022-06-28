@@ -14,11 +14,14 @@ const NavbarMenu = styled.nav`
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
+    > div{
+        display: flex;
+        margin-right: 150px;
+    }
 `
 
-
 const ImgLogo = styled.img `
-    width: 150px;
+    width: 180px;
 `
 
 
@@ -27,7 +30,7 @@ export default function ComponentMenu () {
 
     const handleSubmit = async (e) => {
         e.preventDefault ();
-        navigate("/")
+        navigate("/register")
     }
 
     return (
@@ -35,17 +38,18 @@ export default function ComponentMenu () {
         <CentralContainer>
             <NavbarMenu>
                 <ImgLogo src= {CIPLogo} alt="LogoCip" />
-                <div className="dropdown">
-                    <button className="dropbtn">CLIENTE</button>
-                    <div className="dropdown-content">
-                        <a href="/">Cadastrar</a>
-                        <a href="/">Consultar</a>
+                <div>
+                    <div className="dropdown">
+                        <button className="dropbtn">CLIENTE</button>
+                        <div className="dropdown-content">
+                            <a href="/register">Cadastrar</a>
+                            <a href="/">Consultar</a>
+                        </div>                        
                     </div>
-                    {/* <div>
+                    <div>
                         <button className="dropbtn2">CONTA CORRENTE</button>
-                    </div> */}
+                    </div> 
                 </div>
-                
             </NavbarMenu>
         </CentralContainer>
             
