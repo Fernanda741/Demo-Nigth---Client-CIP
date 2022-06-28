@@ -2,6 +2,7 @@ import React from 'react'
 import { useNavigate } from 'react-router-dom'
 import styled from 'styled-components'
 import CIPLogo from '../../Img/cip-logo.png'
+import './style.css'
 
 const CentralContainer = styled.div`
     width: 100%;
@@ -12,30 +13,13 @@ const NavbarMenu = styled.nav`
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-`
-
-const ListMenu = styled.div`
-    width: 350px;
-    display: flex;
     align-items: center;
-    justify-content: center;
-    justify-content: space-between;
 `
 
-const ClientBar = styled.div`
-    
-`
 
 const ImgLogo = styled.img `
     width: 150px;
 `
-
-const DropButton = styled.button `
-    border: none;
-    outline: none;
-`
-
-
 
 
 export default function ComponentMenu () {
@@ -51,18 +35,17 @@ export default function ComponentMenu () {
         <CentralContainer>
             <NavbarMenu>
                 <ImgLogo src= {CIPLogo} alt="LogoCip" />
-                <ListMenu>
-                    <ClientBar>
-                        <DropButton>Cliente</DropButton>
-                        <div>
-                            <a href>Cadastrar</a>
-                            <li>Consultar</li>
-                        </div>
-                    </ClientBar>
-                    <div>
-                        <button>Conta Corrente</button>
+                <div className="dropdown">
+                    <button className="dropbtn">CLIENTE</button>
+                    <div className="dropdown-content">
+                        <a href="/">Cadastrar</a>
+                        <a href="/">Consultar</a>
                     </div>
-                </ListMenu>
+                    {/* <div>
+                        <button className="dropbtn2">CONTA CORRENTE</button>
+                    </div> */}
+                </div>
+                
             </NavbarMenu>
         </CentralContainer>
             
