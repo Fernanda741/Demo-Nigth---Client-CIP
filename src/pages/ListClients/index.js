@@ -25,6 +25,11 @@ export const ListClients = () => {
                   key={client.id}
                   nome={client.nome}
                   cpf={client.cpf}
+                  endereco={client.endereco}
+                  bairro={client.bairro}
+                  numero={client.numero}
+                  municipio={client.municipio}
+                  uf={client.uf}
                     >
                 </Client>
             </>

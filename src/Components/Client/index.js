@@ -7,16 +7,16 @@ export const Client = ({id, bairro, cep, codigo, complem, cpf, dataNasc, email, 
       <li className="client-info">
           <p>{id}</p>
           <p>{nome}</p>
-          <p>{bairro}</p>
+          <p>{cpf}</p>
           <p>{cep}</p>
           <p>{codigo}</p>
           <p>{complem}</p>
-          <p>{cpf}</p>
           <p>{dataNasc}</p>
           <p>{email}</p>
           <p>{endereco}</p>
-          <p>{municipio}</p>
           <p>{numero}</p>
+          <p>{bairro}</p>
+          <p>{municipio}</p>
           <p>{telefone}</p>
           <p>{uf}</p>
           <Button
