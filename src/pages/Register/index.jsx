@@ -7,21 +7,6 @@ import { useState } from "react";
 
 const Register = () => {
   const { register, handleSubmit, setValue } = useForm();
-  // const [name, setName] = useState("");
-  // const [phone, setPhone] = useState("");
-  // const [date, setDate] = useState("");
-  // const [cpf, setCpf] = useState("");
-  // const [email, setEmail] = useState("");
-  // const [cep, setCep] = useState("");
-  // const [county, setCounty] = useState("");
-  // const [district, setDistrict] = useState("");
-  // const [street, setStreet] = useState("");
-  // const [number, setNumber] = useState("");
-  // const [complement, setComplement] = useState("");
-  // const [uf, setUf] = useState("");
-  // const [name, setName] = useState("");
-  // const [phone, setphone] = useState("");
-  // const [phone, setphone] = useState("");
 
   const onSubmit = (data) => {
     CreateUser(data).then((response) => {
