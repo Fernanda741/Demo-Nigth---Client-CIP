@@ -43,12 +43,7 @@ const Register = () => {
           placeholder="Nome Completo"
           {...register("nome")}
         />
-        <Input
-          label="codigo:"
-          type="tel"
-          placeholder="()"
-          {...register("codigo")}
-        />
+
         <Input
           label="Telefone:"
           type="tel"
