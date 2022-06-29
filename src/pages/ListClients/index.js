@@ -3,6 +3,7 @@ import { Client } from "../../Components/Client";
 import { deleteClient, getClients } from "../../api/index";
 import { Modal } from "../../Components/Modal";
 import { SearchBar } from "../../Components/SearchBar";
+import ComponentMenu from "../../Components/Menu";
 
 export const ListClients = () => {
   const[clients, setClients] = useState([]);
@@ -34,6 +35,7 @@ export const ListClients = () => {
 
   return (
     <>
+      <ComponentMenu />
       <SearchBar />
       <h1 id="title">LISTA DE CLIENTES</h1>
       <section className="container-clients">
@@ -47,7 +49,7 @@ export const ListClients = () => {
                     setModal (true)
                     setDeletingUser(client.id)
                     }}
-                >                  
+                >
                 </Client>
             </div>
             );   

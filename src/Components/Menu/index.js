@@ -40,14 +40,14 @@ export default function ComponentMenu () {
                 <ImgLogo src= {CIPLogo} alt="LogoCip" />
                 <div>
                     <div className="dropdown">
-                        <button className="dropbtn">CLIENTE</button>
+                        <button className="dropbtn">CLIENTE</button>                        
                         <div className="dropdown-content">
                             <a href="/register">Cadastrar</a>
-                            <a href="/listclients">Consultar</a>
+                            <a href="/list-clients">Consultar</a>
                         </div>                        
                     </div>
                     <div>
-                        <button className="dropbtn2">CONTA CORRENTE</button>
+                       <a href="/bill-corrent"><button className="dropbtn2">CONTA CORRENTE</button></a> 
                     </div> 
                 </div>
             </NavbarMenu>
