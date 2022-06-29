@@ -1,6 +1,5 @@
 import React from "react";
 
-
 export const Input = React.forwardRef(
   ({ onChange, label, register, required, onBlur, type, ...props }, ref) => {
     return (
