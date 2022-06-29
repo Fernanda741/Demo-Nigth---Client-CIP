@@ -19,18 +19,14 @@ export const ListClients = () => {
   },[]);
   
   const handleDeleteClient = (id) => {
-    console.log(id)
-     deleteClient(id)
-     .then((response) => {
-      response.json()
-    })
-     
-     .then((data) => {
-       console.log(data, "dataaa")
-     })
-  };
-
-  
+    deleteClient(id)
+      .then((response) => {
+        if (response.status === 200) {
+          const filteredClients = clients.filter((item) => item.id !== id) ;
+          setClients(filteredClients)
+        }
+      })
+  }
 
   return (
     <>
