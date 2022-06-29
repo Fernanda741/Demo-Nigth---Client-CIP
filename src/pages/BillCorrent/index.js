@@ -3,12 +3,11 @@ import ComponentMenu from "../../Components/Menu";
 import { getAccounts } from "../../api/index";
 import { Account } from "../../Components/Account";
 
-
 export default function BillCorrent() {
   const [accounts, setAccounts] = useState([]);
 
   useEffect(() => {
-   getAccounts()
+    getAccounts()
       .then((response) => response.json())
       .then((data) => {
         setAccounts(data.content);
@@ -18,17 +17,16 @@ export default function BillCorrent() {
   return (
     <>
       <ComponentMenu />
-       <section>
+      <section>
         <ul>
           {accounts.map((item) => {
             return (
               <div key={item.id}>
                 <Account
-                agencia={item.agencia}
-                nomeBanco={item.nomeBanco}
-                conta={item.conta}
-                
-
+                  agencia={item.agencia}
+                  nomeBanco={item.nomeBanco}
+                  conta={item.conta}
+                  cliente={item.cliente}
                 />
               </div>
             );

@@ -7,7 +7,6 @@ import { SearchBar } from "../../Components/SearchBar";
 import ComponentMenu from "../../Components/Menu";
 import { Form } from "../../Components/Form";
 
-
 export const ListClients = () => {
   const [clients, setClients] = useState([]);
   const [modal, setModal] = useState(false);
@@ -25,13 +24,13 @@ export const ListClients = () => {
   }, []);
 
   const handleDeleteClient = (id) => {
-    deleteClient(id)
-      .then((response) => {
-        if (response.status === 200) {
-          const filteredClients = clients.filter((item) => item.id !== id) ;
-          setClients(filteredClients)
-        }
-      })
+    deleteClient(id).then((response) => {
+      if (response.status === 200) {
+        const filteredClients = clients.filter((item) => item.id !== id);
+        setClients(filteredClients);
+      }
+    });
+  };
 
   const handleEditClient = (id, data) => {
     updtadeClients(id, data).then((response) => {
@@ -65,7 +64,6 @@ export const ListClients = () => {
                 ></Client>
               </div>
             );
-
           })}
         </ul>
         <Modal
