@@ -5,7 +5,6 @@ import Register from "../../pages/Register";
 import { ListClients } from "../../pages/ListClients";
 import ComponentMenu from "../../Components/Menu";
 import { ComponentFooter } from "../Footer";
-import Uptade from "../../pages/Uptade";
 
 export default function MainRoutes() {
   return (
