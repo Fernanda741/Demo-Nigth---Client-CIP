@@ -1,27 +1,36 @@
-import { useEffect, useState } from 'react';
-import { Client } from '../../Components/Client';
-import { getClients } from '../../api/index';
-import './style.css';
-import { SearchBar } from '../../Components/SearchBar';
-import ReactPaginate from 'react-paginate';
-
-const handlePageClick = (event) => {
-  console.log(event);
-};
+import { useEffect, useState } from "react";
+import { Client } from "../../Components/Client";
+import { deleteClient, getClients } from "../../api/index";
+import { Modal } from "../../Components/Modal";
+import { SearchBar } from "../../Components/SearchBar";
 
 export const ListClients = () => {
-  const [clients, setClients] = useState([]);
+  const[clients, setClients] = useState([]);
+  const[modal,setModal] = useState(false);
+  const[deletingUser, setDeletingUser] = useState(-1);
+
 
   useEffect(() => {
-    getClients()
-      .then((response) => response.json())
-      .then(
-        (data) => {
-          setClients(data.content);
-        },
-        [setClients]
-      );
-  }, []);
+   getClients()
+    .then((response) => response.json())
+    .then((data) => {
+      setClients(data.content);
+    })
+  },[]);
+  
+  const handleDeleteClient = (id) => {
+    console.log(id)
+     deleteClient(id)
+     .then((response) => {
+      response.json()
+    })
+     
+     .then((data) => {
+       console.log(data, "dataaa")
+     })
+  };
+
+  
 
   return (
     <>
@@ -30,10 +39,30 @@ export const ListClients = () => {
       <section className="container-clients">
         <ul className="all-clients">
           {clients.map((client) => {
-            return <Client key={client.id} client={client}></Client>;
+            return (
+              <div key={client.id}>
+                <Client
+                  client={client}                
+                  onClickDelete={() => {
+                    setModal (true)
+                    setDeletingUser(client.id)
+                    }}
+                >                  
+                </Client>
+            </div>
+            );   
           })}
         </ul>
-        <ReactPaginate
+        <Modal
+          modal={modal}
+          click={() => setModal(false)}
+          onClickYes={() => handleDeleteClient(deletingUser)}
+          onClickNo={() => setModal(false)}
+        >
+          Você tem certeza que deseja excluir o cadastro do cliente?
+        </Modal>
+       
+        {/* <ReactPaginate
           breakLabel="..."
           nextLabel="próxima >"
           onPageChange={handlePageClick}
@@ -47,8 +76,9 @@ export const ListClients = () => {
           pageLinkClassName="page-href"
           previousClassName="page-next"
           nextClassName="page-previous"
-        />
+        /> */}
       </section>
+      
     </>
   );
 };
