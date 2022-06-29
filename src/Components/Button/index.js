@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 
 export default function Button({ onClick, value, title, type, children }) {
   return (

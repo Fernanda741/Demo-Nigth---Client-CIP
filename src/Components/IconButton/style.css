@@ -1,0 +1,38 @@
+.icon-btn {
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.icon-edit {
+  background: url(../../Img/editIcon.svg);
+  background-color: rgba(32, 123, 207, 0.7);
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.icon-edit:hover {
+  background-color: rgba(17, 84, 146, 0.7);
+}
+
+.icon-delete {
+  background: url(../../Img/delIcon.svg);
+  background-color: rgba(207, 32, 38, 0.7);
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.icon-delete:hover {
+  background-color: rgba(175, 25, 30, 0.7);
+}
+
+.icon-search {
+  background: url(../../Img/searchIcon.svg);
+  background-color: rgba(217, 217, 217, 0.8);
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.icon-search:hover {
+  background-color: rgba(210, 210, 210, 0.8);
+}
