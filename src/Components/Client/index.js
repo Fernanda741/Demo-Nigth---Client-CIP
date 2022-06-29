@@ -1,8 +1,8 @@
 import "./style.css";
 
-export const Client = ({id, bairro, cep, codigo, complem, cpf, dataNasc, email, endereco, municipio, nome, numero, telefone, uf, children}) => {
+export const Client = ({id, bairro, cep, codigo, complem, cpf, dataNasc, email, endereco, municipio, nome, numero, telefone, uf, children, onClickDelete}) => {
   return (
-    <ul className="container-client">
+    // <ul className="container-client">
       <li className="client-info">
           <p>{id}</p>
           <p>{nome}</p>
@@ -19,7 +19,10 @@ export const Client = ({id, bairro, cep, codigo, complem, cpf, dataNasc, email, 
           <p>{telefone}</p>
           <p>{uf}</p>
        {children} 
+        {/* <button className="btn-edit" onClick={onClickEdit} value={value}> Editar</button> */}
+        <button className="btn-delete" onClick={onClickDelete}> Excluir
+         </button>
       </li>
-    </ul>
+    // </ul>
   )
-}
+} 

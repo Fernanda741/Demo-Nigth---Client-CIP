@@ -15,4 +15,5 @@
 .btn-delete{
   border-radius: 3px;
   background-color: rgb(206, 30, 30);
+  height: 30px;
 }

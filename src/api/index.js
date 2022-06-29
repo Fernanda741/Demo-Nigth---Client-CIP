@@ -1,6 +1,6 @@
 import { faker } from "@faker-js/faker";
 
-const baseUrl = "https://bank-services-challenge.herokuapp.com/";
+const baseUrl = "https://bank-services-challenge2.herokuapp.com/";
 
 export const CreateUser = (data) => {
   data.dataNasc = new Date(data.dataNasc).toISOString();
