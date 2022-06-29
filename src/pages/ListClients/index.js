@@ -30,7 +30,6 @@ export const ListClients = () => {
       .then((response) => {
         response.json();
       })
-
       .then((data) => {
         console.log(data, "dataaa");
       });

@@ -1,16 +1,17 @@
 import React, { useState, useEffect } from "react";
 import ComponentMenu from "../../Components/Menu";
-import { CheckingAccount } from "../../Components/CheckingAccount";
-import { deleteClient, getClients } from "../../api/index";
+import { getAccounts } from "../../api/index";
+import { Account } from "../../Components/Account";
+
 
 export default function BillCorrent() {
-  const [clients, setClients] = useState([]);
+  const [accounts, setAccounts] = useState([]);
 
   useEffect(() => {
-    getClients()
+   getAccounts()
       .then((response) => response.json())
       .then((data) => {
-        setClients(data.content);
+        setAccounts(data.content);
       });
   }, []);
 
@@ -19,10 +20,16 @@ export default function BillCorrent() {
       <ComponentMenu />
        <section>
         <ul>
-          {clients.map((client) => {
+          {accounts.map((item) => {
             return (
-              <div key={client.id}>
-                <CheckingAccount client={client}></CheckingAccount>
+              <div key={item.id}>
+                <Account
+                agencia={item.agencia}
+                nomeBanco={item.nomeBanco}
+                conta={item.conta}
+                
+
+                />
               </div>
             );
           })}
