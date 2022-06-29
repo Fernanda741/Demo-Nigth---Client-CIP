@@ -2,13 +2,13 @@
 import { Input } from "../../Components/Input";
 import Button from "../../Components/Button";
 import { useForm } from "react-hook-form";
-import { CreateUser } from "../../api";
-import { validarCpf, emailRegExp } from "../../validator";
-// import InputMask from "react-input-mask";
-
+import { createClients } from "../../api";
+import { validarCpf, emailRegExp, maskCPF, maskPhone } from "../../validator";
+import { ErrorAlert, ErrorMessages } from "../../Components/ErrorComponent";
 import styled from "styled-components";
 import ComponentMenu from "../../Components/Menu";
 import BannerImg from "../../Img/banner-register.png";
+import { useState } from "react";
 
 const FormSection = styled.form`
   /* @import url('https://fonts.googleapis.com/css2?family=Anton&family=Inder&family=Montserrat:wght@300&display=swap'); */
@@ -46,15 +46,27 @@ const Img = styled.img`
 `;
 
 const Register = () => {
-  const { register, handleSubmit, setValue } = useForm();
+  const {
+    register,
+    handleSubmit,
+    setValue,
+    formState: { errors },
+  } = useForm();
+
+  const [cpf, setCpf] = useState("");
+  const [phone, setPhone] = useState("");
 
   const onSubmit = (data) => {
-    console.log("teste");
-    CreateUser(data).then((response) => {
-      if (response.status === 200) {
-        return response.json();
-      }
-    });
+    createClients(data)
+      .then((response) => {
+        if (response.status === 200) {
+          return response.json();
+        }
+        alert("Deu certo");
+      })
+      .catch((error) => {
+        errors(ErrorAlert(error));
+      });
   };
 
   const checkCEP = (e) => {
@@ -86,30 +98,36 @@ const Register = () => {
             placeholder="Nome Completo"
             {...register("nome", { required: true })}
           />
+          {errors.name && <p>campo obrigtorio</p>}
           <Input
             label="Telefone:"
             type="tel"
-            placeholder="(xx) x xxxxxxxx"
-            {...register("telefone", { required: true })}
+            {...register("telefone", { required: true, max: 11 })}
+            value={phone}
+            onChange={(e) => setPhone(maskPhone(e.target.value))}
           />
+          {errors.telefone && <p>campo obrigtorio</p>}
 
           <Input
             label="Data de Nascimento:"
             type="date"
             {...register("dataNasc", { required: true })}
           />
+          {errors.dataNasc && <p>campo obrigtorio</p>}
 
-          <label>CPF:</label>
           <Input
             label="CPF:"
             type="text"
             placeholder="000.000.000-00"
-            mask="999.999.99-99"
             {...register("cpf", {
-              required: true,
+              required: "true",
               validate: validarCpf,
             })}
+            value={cpf}
+            onChange={(e) => setCpf(maskCPF(e.target.value))}
           />
+          {errors.cpf && <p>por favor, digite um CPF valido</p>}
+
           <Input
             label="Email:"
             type="email"
@@ -119,6 +137,7 @@ const Register = () => {
               pattern: emailRegExp,
             })}
           />
+          {errors.email && <p>campo obrigtorio</p>}
         </div>
         <div>
           <Input
@@ -127,35 +146,40 @@ const Register = () => {
             placeholder="Cep"
             {...register("cep", { onBlur: checkCEP, required: true })}
           />
+          {errors.cep && <p>campo obrigtorio</p>}
           <Input
             label="Municipio"
             type="text"
             placeholder="Municipio"
             {...register("municipio", { required: true })}
           />
+          {errors.municipio && <p>campo obrigtorio</p>}
           <Input
             label="Bairro:"
             type="text"
             placeholder="Bairro"
             {...register("bairro", { required: true })}
           />
+          {errors.bairro && <p>campo obrigtorio</p>}
           <Input
             label="Rua:"
             type="text"
             placeholder="Rua"
             {...register("endereco", { required: true })}
           />
+          {errors.endereco && <p>campo obrigtorio</p>}
           <Input
             label="Numero:"
             type="number"
             placeholder="Nº"
             {...register("numero", { required: true })}
           />
+          {errors.numero && <p>campo obrigtorio</p>}
           <Input
             label="Complemento:"
             type="text"
             placeholder="Complemento"
-            {...register("complem")}
+            {...register("complem", { required: true, min: 2 })}
           />
           <Input
             label="UF:"
@@ -163,6 +187,7 @@ const Register = () => {
             placeholder="UF"
             {...register("uf", { required: true })}
           />
+          {errors.uf && <p>campo obrigtorio</p>}
           <Button title="Cadastrar" type="submit" />
         </div>
       </FormSection>
