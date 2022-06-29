@@ -5,6 +5,7 @@ import { deleteClient, getClients, updtadeClients } from "../../api/index";
 import { Modal, ModalEdit } from "../../Components/Modal";
 import { SearchBar } from "../../Components/SearchBar";
 import ComponentMenu from "../../Components/Menu";
+import { Form } from "../../Components/Form";
 
 
 export const ListClients = () => {
