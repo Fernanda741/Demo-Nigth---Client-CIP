@@ -15,36 +15,49 @@ const FormSection = styled.form`
   display: flex;
   width: 100%;
   justify-content: center;
-  background-color: #f3f3f3;
-  > div {
+  background-color: #F3F3F3;
+  flex-wrap: wrap;
+  > div{
     display: flex;
     flex-direction: column;
     padding: 150px;
     padding-top: 0px;
     padding-bottom: 0px;
-    width: 100%;
+  
+    > label{
+     margin-bottom: 10px;
+     margin-top: 3px;
+     border-color: black;
+     font-family: "Montserrat";
+     font-weight: bolder;
+     font-size: 15px;
+    } 
 
-    > label {
-      margin-bottom: 10px;
-      margin-top: 3px;
-      border-color: black;
-      font-family: "Montserrat";
-      font-weight: bolder;
-      font-size: 15px;
-    }
+   > input {
+    border-radius: 3px;
+    width: 25vw;
+    padding: 10px;
+   }
 
-    > input {
-      border-radius: 3px;
-      width: 25vw;
-      padding: 10px;
-    }
+   > section {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+     > div {
+      display: flex;
+      > button {
+        margin-right: 15px;
+        margin-left: 15px;
+      }
+     }
+   }
   }
 `;
 
-const Img = styled.img`
-  width: 100%;
-`;
-
+const Img = styled.img `
+width: 100%;
+`
 const Register = () => {
   const {
     register,
@@ -186,11 +199,18 @@ const Register = () => {
             placeholder="UF"
             {...register("uf", { required: true })}
           />
+
+          <Input label="UF:" type="text" placeholder="UF" {...register("uf")} />
+          <section>
+          <div>
+            <Button title="Confirmar Cadastro" type="submit" />
+            <Button title="Cancelar Cadastro" type="submit" /> 
+          </div>
+        </section>          
           {errors.uf && <p>campo obrigtorio</p>}
-          <Button title="Cadastrar" type="submit" />
-        </div>
+        </div>  
       </FormSection>
-    </section>
+   </section>
   );
 };
 
