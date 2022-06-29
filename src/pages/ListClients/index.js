@@ -25,15 +25,13 @@ export const ListClients = () => {
   }, []);
 
   const handleDeleteClient = (id) => {
-    console.log(id);
     deleteClient(id)
       .then((response) => {
-        response.json();
+        if (response.status === 200) {
+          const filteredClients = clients.filter((item) => item.id !== id) ;
+          setClients(filteredClients)
+        }
       })
-      .then((data) => {
-        console.log(data, "dataaa");
-      });
-  };
 
   const handleEditClient = (id, data) => {
     updtadeClients(id, data).then((response) => {
