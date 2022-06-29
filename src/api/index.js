@@ -59,3 +59,13 @@ export const getAccounts = () => {
     },
   });
 }
+
+export const deleteAccount = (id) => {
+  console.log(id);
+  return fetch(`${baseUrl}api/v1/contaCorrente/${id}`, {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+};

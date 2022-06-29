@@ -1,3 +1,5 @@
+import IconButton from "../IconButton";
+
 export const Account = ({
   id,
   agencia,
@@ -5,7 +7,7 @@ export const Account = ({
   numBanco,
   conta,
   senha,
-  cliente,
+  cliente, onClickDelete
 }) => {
   return (
     <li className="account-root">
@@ -18,6 +20,12 @@ export const Account = ({
         <p>{senha}</p>
         <p>{cliente.nome}</p>
       </main>
+      <IconButton
+        type="submit"
+        title="Excluir"
+        className="btn-delete icon-delete"
+        onClick={onClickDelete}
+      />
     </li>
   );
 };
