@@ -1,7 +1,7 @@
 import IconButton from '../IconButton';
 import './style.css';
 
-export const Client = ({ client, onClick }) => {
+export const Client = ({ client, onClickDelete }) => {
   return (
     <li className="client-root">
       <main className="client-info">
@@ -14,6 +14,7 @@ export const Client = ({ client, onClick }) => {
         type="submit"
         title="Excluir"
         className="btn-delete icon-delete"
+        onClick={onClickDelete}
       />
     </li>
   );
