@@ -4,8 +4,8 @@ import { Client } from "../../Components/Client";
 import { deleteClient, getClients, updtadeClients } from "../../api/index";
 import { Modal, ModalEdit } from "../../Components/Modal";
 import { SearchBar } from "../../Components/SearchBar";
-import { Form } from "../../Components/Form";
-import "./style.css";
+import ComponentMenu from "../../Components/Menu";
+
 
 export const ListClients = () => {
   const [clients, setClients] = useState([]);
@@ -46,6 +46,7 @@ export const ListClients = () => {
 
   return (
     <>
+      <ComponentMenu />
       <SearchBar />
       <h1 id="title">LISTA DE CLIENTES</h1>
       <section className="container-clients">
@@ -66,6 +67,7 @@ export const ListClients = () => {
                 ></Client>
               </div>
             );
+
           })}
         </ul>
         <Modal

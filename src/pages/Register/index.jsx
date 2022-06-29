@@ -11,42 +11,42 @@ import BannerImg from "../../Img/banner-register.png";
 import { useState } from "react";
 import './style.css'
 
-const FormSection = styled.form`  
-  display: flex;
-  width: 100%;
-  justify-content: center;
-  background-color: #f3f3f3;
-  flex-wrap: wrap;
+// const FormSection = styled.form`  
+//   display: flex;
+//   width: 100%;
+//   justify-content: center;
+//   background-color: #f3f3f3;
+//   flex-wrap: wrap;
   
-    > input {
-      border-radius: 3px;
-      width: 25vw;
-      padding: 10px;
-    }
+//     > input {
+//       border-radius: 3px;
+//       width: 25vw;
+//       padding: 10px;
+//     }
 
-    > section {
-      margin-top: 20px;
-      margin-bottom: 20px;
-      display: flex;
-      justify-content: center;
+//     > section {
+//       margin-top: 20px;
+//       margin-bottom: 20px;
+//       display: flex;
+//       justify-content: center;
 
-      > div {
-        display: flex;
-        > button {
-          margin-right: 15px;
-          margin-left: 15px;
-          background-color: #6acc86;
-          font-family: "Montserrat";
-          font-weight: bolder;
-          border-radius: 3px;
-          padding: 10px;
-          border: #ababab 1px;
-          width: 150px;
-        }
-      }
-    }
-  }
-`;
+//       > div {
+//         display: flex;
+//         > button {
+//           margin-right: 15px;
+//           margin-left: 15px;
+//           background-color: #6acc86;
+//           font-family: "Montserrat";
+//           font-weight: bolder;
+//           border-radius: 3px;
+//           padding: 10px;
+//           border: #ababab 1px;
+//           width: 150px;
+//         }
+//       }
+//     }
+//   }
+// `;
 
 const Register = () => {
   const {
@@ -89,7 +89,9 @@ const Register = () => {
   };
 
   return (
+    
     <section>
+      <ComponentMenu />
       <img className="Img" src={BannerImg} alt="Banner Image" />
       <h3 className="Title">DADOS PESSOAIS</h3>
       <form className="form-section" onSubmit={handleSubmit(onSubmit)}>
