@@ -1,7 +1,7 @@
-import IconButton from '../IconButton';
-import './style.css';
+import IconButton from "../IconButton";
+import "./style.css";
 
-export const Client = ({ client, onClickDelete }) => {
+export const Client = ({ client, onClickDelete, onclickEdit }) => {
   return (
     <li className="client-root">
       <main className="client-info">
@@ -9,7 +9,12 @@ export const Client = ({ client, onClickDelete }) => {
         <span>{client.cpf}</span>
       </main>
 
-      <IconButton type="submit" className="btn-edit icon-edit" title="Editar" />
+      <IconButton
+        type="submit"
+        className="btn-edit icon-edit"
+        title="Editar"
+        onClick={onclickEdit}
+      />
       <IconButton
         type="submit"
         title="Excluir"

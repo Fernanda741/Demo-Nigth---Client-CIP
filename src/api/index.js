@@ -21,21 +21,21 @@ export const createClients = (data) => {
 };
 
 export const getClients = () => {
-  return fetch(`${baseUrl}api/v1/cliente`,{
+  return fetch(`${baseUrl}api/v1/cliente`, {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
-    }
+    },
   });
 };
 
 export const deleteClient = (id) => {
-  console.log(id)
+  console.log(id);
   return fetch(`${baseUrl}api/v1/cliente/${id}`, {
     method: "DELETE",
     headers: {
       "Content-Type": "application/json",
-    }
+    },
   });
 };
 
@@ -43,9 +43,9 @@ export const updtadeClients = (id, data) => {
   return fetch(
     `https://bank-services-challenge2.herokuapp.com/api/v1/cliente/${id}`,
     {
-      method: "POST",
+      method: "PUT",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(data),
-    })
-  }
-  
+    }
+  );
+};

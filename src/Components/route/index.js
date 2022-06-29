@@ -8,6 +8,7 @@ import { ComponentFooter } from '../Footer';
 import Uptade from '../../pages/Uptade';
 import BillCorrent from '../../pages/BillCorrent'
 
+
 export default function MainRoutes() {
   return (
     <BrowserRouter>      
@@ -17,7 +18,7 @@ export default function MainRoutes() {
         <Route exact path="/list-clients" element={<ListClients />} />
         <Route exact path="/update" element={<Uptade />} />
         <Route exact path="/bill-corrent" element={<BillCorrent />} />
-      </Routes>      
+      </Routes> 
     </BrowserRouter>
   );
 }
