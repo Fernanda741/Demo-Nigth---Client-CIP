@@ -1,36 +1,20 @@
-import Button from "../Button"
-import "./style.css";
+import IconButton from '../IconButton';
+import './style.css';
 
-export const Client = ({id, bairro, cep, codigo, complem, cpf, dataNasc, email, endereco, municipio, nome, numero, telefone, uf, onClick }) => {
+export const Client = ({ client, onClick }) => {
   return (
-    <ul className="container-client">
-      <li className="client-info">
-          <p>{id}</p>
-          <p>{nome}</p>
-          <p>{cpf}</p>
-          <p>{cep}</p>
-          <p>{codigo}</p>
-          <p>{complem}</p>
-          <p>{dataNasc}</p>
-          <p>{email}</p>
-          <p>{endereco}</p>
-          <p>{numero}</p>
-          <p>{bairro}</p>
-          <p>{municipio}</p>
-          <p>{telefone}</p>
-          <p>{uf}</p>
+    <li className="client-root">
+      <main className="client-info">
+        <span>{client.nome}</span>
+        <span>{client.cpf}</span>
+      </main>
 
-        <Button
-          type="submit"
-          className="btn-edit"
-          title="Editar"
-        />
-        <Button
-          type="submit"
-          title="Excluir"
-          className="btn-delete"
-        />
-      </li>
-    </ul>
-  )
-}
+      <IconButton type="submit" className="btn-edit icon-edit" title="Editar" />
+      <IconButton
+        type="submit"
+        title="Excluir"
+        className="btn-delete icon-delete"
+      />
+    </li>
+  );
+};

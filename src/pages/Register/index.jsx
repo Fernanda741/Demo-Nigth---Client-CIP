@@ -87,7 +87,6 @@ const Register = () => {
 
   return (
     <section>
-      <ComponentMenu />
       <Img src={BannerImg} alt="Banner Image" />
       <h3>DADOS PESSOAIS</h3>
       <FormSection onSubmit={handleSubmit(onSubmit)}>

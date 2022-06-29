@@ -1,0 +1,32 @@
+#title {
+  font-size: 35px;
+  margin-left: 41px;
+}
+
+.container-clients {
+  background-color: #f3f3f3;
+  padding: 40px;
+}
+
+.page-container {
+  list-style: none;
+  display: flex;
+  align-items: center;
+}
+
+.page-active {
+  background: black;
+  color: white;
+}
+
+.page-item,
+.page-next,
+.page-previous {
+  border: 1px solid #b6b6b6 !important;
+  cursor: pointer;
+  margin-left: -1px;
+}
+
+.page-href {
+  padding: 6px 12px 6px 12px;
+}
