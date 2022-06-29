@@ -6,11 +6,11 @@
 }
 
 .search-bar input {
-  height: 70px;
   border-radius: 5px;
   border: none;
-  font-size: 36px;
   padding-left: 30px;
+  height: 36px;
+  font-size: 24px;
 }
 
 .search-bar input:nth-child(1) {
@@ -22,6 +22,6 @@
 }
 
 .search-bar button {
-  height: 70px;
-  width: 70px;
+  height: 36px;
+  width: 36px;
 }

@@ -1,23 +1,29 @@
+/* eslint-disable no-unused-vars */
 import { useEffect, useState } from "react";
 import { Client } from "../../Components/Client";
-import { deleteClient, getClients } from "../../api/index";
-import { Modal } from "../../Components/Modal";
+import { deleteClient, getClients, updtadeClients } from "../../api/index";
+import { Modal, ModalEdit } from "../../Components/Modal";
 import { SearchBar } from "../../Components/SearchBar";
+import ComponentMenu from "../../Components/Menu";
+import { Form } from "../../Components/Form";
+
 
 export const ListClients = () => {
-  const[clients, setClients] = useState([]);
-  const[modal,setModal] = useState(false);
-  const[deletingUser, setDeletingUser] = useState(-1);
+  const [clients, setClients] = useState([]);
+  const [modal, setModal] = useState(false);
+  const [modalEdit, setModalEdit] = useState(false);
+  const [deletingUser, setDeletingUser] = useState(-1);
+  const [editClient, setEditClient] = useState("");
 
-
+  const clientEditData = clients.find((client) => client.id === editClient);
   useEffect(() => {
-   getClients()
-    .then((response) => response.json())
-    .then((data) => {
-      setClients(data.content);
-    })
-  },[]);
-  
+    getClients()
+      .then((response) => response.json())
+      .then((data) => {
+        setClients(data.content);
+      });
+  }, []);
+
   const handleDeleteClient = (id) => {
     deleteClient(id)
       .then((response) => {
@@ -27,9 +33,19 @@ export const ListClients = () => {
         }
       })
   }
+ 
+  const handleEditClient = (id, data) => {
+    updtadeClients(id, data).then((response) => {
+      if (response.status === 200) {
+        return response.json();
+      }
+      setModalEdit(true);
+    });
+  };
 
   return (
     <>
+      <ComponentMenu />
       <SearchBar />
       <h1 id="title">LISTA DE CLIENTES</h1>
       <section className="container-clients">
@@ -38,15 +54,19 @@ export const ListClients = () => {
             return (
               <div key={client.id}>
                 <Client
-                  client={client}                
+                  client={client}
                   onClickDelete={() => {
-                    setModal (true)
-                    setDeletingUser(client.id)
-                    }}
-                >                  
-                </Client>
-            </div>
-            );   
+                    setModal(true);
+                    setDeletingUser(client.id);
+                  }}
+                  onclickEdit={() => {
+                    setModalEdit(true);
+                    setEditClient(client.id);
+                  }}
+                ></Client>
+              </div>
+            );
+
           })}
         </ul>
         <Modal
@@ -57,7 +77,11 @@ export const ListClients = () => {
         >
           Você tem certeza que deseja excluir o cadastro do cliente?
         </Modal>
-       
+
+        <ModalEdit modal={modalEdit} onClickNo={() => setModalEdit(false)}>
+          <Form client={clientEditData} onSubmit={handleEditClient} />
+        </ModalEdit>
+
         {/* <ReactPaginate
           breakLabel="..."
           nextLabel="próxima >"
@@ -74,7 +98,6 @@ export const ListClients = () => {
           nextClassName="page-previous"
         /> */}
       </section>
-      
     </>
   );
 };

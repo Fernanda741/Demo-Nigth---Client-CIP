@@ -9,55 +9,45 @@ import styled from "styled-components";
 import ComponentMenu from "../../Components/Menu";
 import BannerImg from "../../Img/banner-register.png";
 import { useState } from "react";
+import './style.css'
 
-const FormSection = styled.form`
-  /* @import url('https://fonts.googleapis.com/css2?family=Anton&family=Inder&family=Montserrat:wght@300&display=swap'); */
-  display: flex;
-  width: 100%;
-  justify-content: center;
-  background-color: #F3F3F3;
-  flex-wrap: wrap;
-  > div{
-    display: flex;
-    flex-direction: column;
-    padding: 150px;
-    padding-top: 0px;
-    padding-bottom: 0px;
+// const FormSection = styled.form`  
+//   display: flex;
+//   width: 100%;
+//   justify-content: center;
+//   background-color: #f3f3f3;
+//   flex-wrap: wrap;
   
-    > label{
-     margin-bottom: 10px;
-     margin-top: 3px;
-     border-color: black;
-     font-family: "Montserrat";
-     font-weight: bolder;
-     font-size: 15px;
-    } 
+//     > input {
+//       border-radius: 3px;
+//       width: 25vw;
+//       padding: 10px;
+//     }
 
-   > input {
-    border-radius: 3px;
-    width: 25vw;
-    padding: 10px;
-   }
+//     > section {
+//       margin-top: 20px;
+//       margin-bottom: 20px;
+//       display: flex;
+//       justify-content: center;
 
-   > section {
-    margin-top: 20px;
-    margin-bottom: 20px;
-    display: flex;
-    justify-content: center;
-     > div {
-      display: flex;
-      > button {
-        margin-right: 15px;
-        margin-left: 15px;
-      }
-     }
-   }
-  }
-`;
+//       > div {
+//         display: flex;
+//         > button {
+//           margin-right: 15px;
+//           margin-left: 15px;
+//           background-color: #6acc86;
+//           font-family: "Montserrat";
+//           font-weight: bolder;
+//           border-radius: 3px;
+//           padding: 10px;
+//           border: #ababab 1px;
+//           width: 150px;
+//         }
+//       }
+//     }
+//   }
+// `;
 
-const Img = styled.img `
-width: 100%;
-`
 const Register = () => {
   const {
     register,
@@ -99,11 +89,13 @@ const Register = () => {
   };
 
   return (
+    
     <section>
-      <Img src={BannerImg} alt="Banner Image" />
-      <h3>DADOS PESSOAIS</h3>
-      <FormSection onSubmit={handleSubmit(onSubmit)}>
-        <div>
+      <ComponentMenu />
+      <img className="Img" src={BannerImg} alt="Banner Image" />
+      <h3 className="Title">DADOS PESSOAIS</h3>
+      <form className="form-section" onSubmit={handleSubmit(onSubmit)}>
+        <div className="first-div">
           <Input
             label="Nome:"
             type="text"
@@ -151,7 +143,7 @@ const Register = () => {
           />
           {errors.email && <p>campo obrigatório</p>}
         </div>
-        <div>
+        <div className="second-div">
           <Input
             label="Cep:"
             type="text"
@@ -200,17 +192,16 @@ const Register = () => {
             {...register("uf", { required: true })}
           />
 
-          <Input label="UF:" type="text" placeholder="UF" {...register("uf")} />
-          <section>
-          <div>
-            <Button title="Confirmar Cadastro" type="submit" />
-            <Button title="Cancelar Cadastro" type="submit" /> 
-          </div>
-        </section>          
-          {errors.uf && <p>campo obrigatório</p>}
-        </div>  
-      </FormSection>
-   </section>
+          {/* <section>
+            <div>
+              <Button title="Confirmar Cadastro" type="submit" />
+              <Button ClassName title="Cancelar Cadastro" type="submit" />
+            </div>
+          </section> */}
+          {errors.uf && <p>campo obrigtorio</p>}
+        </div>
+      </form>
+    </section>
   );
 };
 
