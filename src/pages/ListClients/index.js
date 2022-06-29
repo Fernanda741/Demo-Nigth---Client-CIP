@@ -1,3 +1,4 @@
+
 /* eslint-disable no-unused-vars */
 import { useEffect, useState } from "react";
 import { Client } from "../../Components/Client";
@@ -5,6 +6,8 @@ import { deleteClient, getClients, updtadeClients } from "../../api/index";
 import { Modal, ModalEdit } from "../../Components/Modal";
 import { SearchBar } from "../../Components/SearchBar";
 import { Form } from "../../Components/Form";
+import './style.css';
+
 
 export const ListClients = () => {
   const [clients, setClients] = useState([]);
@@ -12,6 +15,7 @@ export const ListClients = () => {
   const [modalEdit, setModalEdit] = useState(false);
   const [deletingUser, setDeletingUser] = useState(-1);
   const [editClient, setEditClient] = useState("");
+
 
   const clientEditData = clients.find((client) => client.id === editClient);
   useEffect(() => {
@@ -41,7 +45,10 @@ export const ListClients = () => {
       }
       setModalEdit(true);
     });
-  };
+
+
+      
+  
 
   return (
     <>
@@ -76,9 +83,12 @@ export const ListClients = () => {
           Você tem certeza que deseja excluir o cadastro do cliente?
         </Modal>
 
+
+
         <ModalEdit modal={modalEdit} onClickNo={() => setModalEdit(false)}>
           <Form client={clientEditData} onSubmit={handleEditClient} />
         </ModalEdit>
+
 
         {/* <ReactPaginate
           breakLabel="..."

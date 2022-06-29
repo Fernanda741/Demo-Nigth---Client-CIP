@@ -1,11 +1,12 @@
 import React from "react";
+import './style.css'
 
 export const Input = React.forwardRef(
   ({ onChange, label, register, required, onBlur, type, ...props }, ref) => {
     return (
       <>
         <label>{label}</label>
-        <input
+        <input className="input-style"
           register={register}
           onBlur={onBlur}
           required={required}

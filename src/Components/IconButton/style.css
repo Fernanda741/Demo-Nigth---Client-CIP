@@ -31,6 +31,7 @@
   background-color: rgba(217, 217, 217, 0.8);
   background-repeat: no-repeat;
   background-position: center;
+  background-size: 24px;
 }
 
 .icon-search:hover {

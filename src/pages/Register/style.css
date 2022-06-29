@@ -1,3 +1,108 @@
 .container-register {
   padding-bottom: 58px;
 }
+
+.form-section {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  background-color: #f3f3f3;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.first-div {
+    display: flex;
+    flex-direction: column;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    padding-left: 200px;
+    padding-right: 200px;
+}
+
+.first-div label {
+    margin-bottom: 10px;
+    margin-top: 3px;
+    border-color: black;
+    font-family: "Montserrat";
+    font-weight: bolder;
+    font-size: 15px;
+}
+
+.first-div input {
+  margin-bottom: 10px;
+  margin-top: 3px;
+  border-color: black;
+  font-family: "Montserrat";
+  font-weight: bolder;
+  font-size: 15px;
+  border-radius: 3px;
+  width: 250px;
+  padding: 5px;
+}
+
+.second-div {
+  display: flex;
+  flex-direction: column;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  padding-right: 250px;
+  padding-left: 250px;
+}
+
+.second-div label {
+    margin-bottom: 10px;
+    margin-top: 3px;
+    border-color: black;
+    font-family: "Montserrat";
+    font-weight: bolder;
+    font-size: 15px;
+}
+
+.second-div input {
+    margin-bottom: 10px;
+    margin-top: 3px;
+    border-color: black;
+    font-family: "Montserrat";
+    font-weight: bolder;
+    font-size: 15px;
+    border-radius: 3px;
+    width: 250px;
+    padding: 5px;
+}
+
+
+
+/* .form-section div section {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.form-section div section div {
+    display: flex;
+    flex-direction: row-reverse;
+}
+
+.form-section div section div button {
+    margin-right: 15px;
+    margin-left: 15px;
+    background-color: #6acc86;
+    font-family: "Montserrat";
+    font-weight: bolder;
+    border-radius: 3px;
+    padding: 10px;
+    border: #ababab 1px;
+    width: 150px;
+} */
+
+.Title {
+  margin-left: 50px;
+  font-size: 30px;
+  color: #2f333b;
+} 
+
+.Img{
+  width: 100%;
+}
