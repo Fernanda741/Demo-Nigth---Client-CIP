@@ -102,7 +102,7 @@ const Register = () => {
             placeholder="Nome Completo"
             {...register("nome", { required: true })}
           />
-          {errors.name && <p>campo obrigtorio</p>}
+          {errors.name && <p>campo obrigatório</p>}
           <Input
             label="Telefone:"
             type="tel"
@@ -110,14 +110,14 @@ const Register = () => {
             value={phone}
             onChange={(e) => setPhone(maskPhone(e.target.value))}
           />
-          {errors.telefone && <p>campo obrigtorio</p>}
+          {errors.telefone && <p>campo obrigatório</p>}
 
           <Input
             label="Data de Nascimento:"
             type="date"
             {...register("dataNasc", { required: true })}
           />
-          {errors.dataNasc && <p>campo obrigtorio</p>}
+          {errors.dataNasc && <p>campo obrigatório</p>}
 
           <Input
             label="CPF:"
@@ -130,7 +130,7 @@ const Register = () => {
             value={cpf}
             onChange={(e) => setCpf(maskCPF(e.target.value))}
           />
-          {errors.cpf && <p>por favor, digite um CPF valido</p>}
+          {errors.cpf && <p>Por favor, digite um CPF válido</p>}
 
           <Input
             label="Email:"
@@ -141,7 +141,7 @@ const Register = () => {
               pattern: emailRegExp,
             })}
           />
-          {errors.email && <p>campo obrigtorio</p>}
+          {errors.email && <p>campo obrigatório</p>}
         </div>
         <div className="second-div">
           <Input
@@ -150,35 +150,35 @@ const Register = () => {
             placeholder="Cep"
             {...register("cep", { onBlur: checkCEP, required: true })}
           />
-          {errors.cep && <p>campo obrigtorio</p>}
+          {errors.cep && <p>campo obrigatório</p>}
           <Input
             label="Municipio"
             type="text"
             placeholder="Municipio"
             {...register("municipio", { required: true })}
           />
-          {errors.municipio && <p>campo obrigtorio</p>}
+          {errors.municipio && <p>campo obrigatório</p>}
           <Input
             label="Bairro:"
             type="text"
             placeholder="Bairro"
             {...register("bairro", { required: true })}
           />
-          {errors.bairro && <p>campo obrigtorio</p>}
+          {errors.bairro && <p>campo obrigatório</p>}
           <Input
             label="Rua:"
             type="text"
             placeholder="Rua"
             {...register("endereco", { required: true })}
           />
-          {errors.endereco && <p>campo obrigtorio</p>}
+          {errors.endereco && <p>campo obrigatório</p>}
           <Input
             label="Numero:"
             type="number"
             placeholder="Nº"
             {...register("numero", { required: true })}
           />
-          {errors.numero && <p>campo obrigtorio</p>}
+          {errors.numero && <p>campo obrigatório</p>}
           <Input
             label="Complemento:"
             type="text"
