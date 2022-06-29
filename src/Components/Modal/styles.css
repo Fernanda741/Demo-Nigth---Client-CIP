@@ -1,0 +1,50 @@
+.visible {
+  display: block;
+}
+.hidden {
+  display: none;
+}
+.modal-container {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: rgba(61, 154, 226, 0.8);
+  z-index: 99999;
+  opacity: 0;
+  -webkit-transition: opacity 400ms ease-in;
+  -moz-transition: opacity 400ms ease-in;
+  transition: opacity 400ms ease-in;
+  pointer-events: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.container-btns {
+  display: flex;
+  height: 35px;
+  margin: 25px;
+}
+#btn-post {
+  margin-right: 10px;
+}
+#btn-cancel {
+  height: 35px;
+  line-height: 32px;
+}
+.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.modal-container > form {
+  padding: 5px 20px 13px 20px;
+  border-radius: 10px;
+  background: #fff;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+.modal-container h2 {
+  color: #3d9ae2;
+}
