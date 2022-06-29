@@ -49,3 +49,13 @@ export const updtadeClients = (id, data) => {
     }
   );
 };
+
+
+export const getAccounts = () => {
+  return fetch(`${baseUrl}api/v1/contaCorrente`, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+}

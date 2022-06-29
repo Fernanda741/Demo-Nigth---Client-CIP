@@ -32,8 +32,7 @@ export const ListClients = () => {
           setClients(filteredClients)
         }
       })
-  }
- 
+
   const handleEditClient = (id, data) => {
     updtadeClients(id, data).then((response) => {
       if (response.status === 200) {

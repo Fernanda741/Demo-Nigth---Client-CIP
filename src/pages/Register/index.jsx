@@ -198,7 +198,7 @@ const Register = () => {
               <Button ClassName title="Cancelar Cadastro" type="submit" />
             </div>
           </section> */}
-          {errors.uf && <p>campo obrigtorio</p>}
+          {errors.uf && <p>campo obrigatório</p>}
         </div>
       </form>
     </section>
