@@ -61,17 +61,17 @@ const Register = () => {
   const [phone, setPhone] = useState("");
 
   const onSubmit = (data) => {
-    console.log("Oieee")
     createClients(data)
       .then((response) => {
         if (response.status === 201) {
-          alert("Deu certo");
+          notifySuccess();
           return response.json();
         }
-        notifyToast();
+        
+        notifyError();
       })
       .catch((error) => {
-        alert("Deu ruim");
+        notifyError();
         errors(ErrorAlert(error));
       });
   };
@@ -92,8 +92,12 @@ const Register = () => {
       });
   };
 
-  const notifyToast = () => {
-    ToastsStore.success('Cliente cadastrado com sucesso!');
+  const notifySuccess = () => {
+    ToastsStore.success('Cliente cadastrado com sucesso');
+  }
+
+  const notifyError = () => {
+    ToastsStore.error('Algo deu errado');
   }
 
   return (
@@ -159,9 +163,9 @@ const Register = () => {
           />
           {errors.cep && <p>Campo Obrigatório</p>}
           <Input
-            label="Municipio"
+            label="Município: "
             type="text"
-            placeholder="Municipio"
+            placeholder="Município"
             {...register("municipio", { required: true })}
           />
           {errors.municipio && <p>Campo Obrigatório</p>}
@@ -180,7 +184,7 @@ const Register = () => {
           />
           {errors.endereco && <p>Campo Obrigatório</p>}
           <Input
-            label="Numero:"
+            label="Número:"
             type="number"
             placeholder="Nº"
             {...register("numero", { required: true })}
@@ -190,7 +194,7 @@ const Register = () => {
             label="Complemento:"
             type="text"
             placeholder="Complemento"
-            {...register("complem", { required: false, min: 2 })}
+            {...register("complem", { required: true, min: 2 })}
           />
           <Input
             label="UF:"
