@@ -9,7 +9,8 @@ import styled from "styled-components";
 import ComponentMenu from "../../Components/Menu";
 import BannerImg from "../../Img/banner-register.png";
 import { useState, useCallback, useEffect } from "react";
-import "./style.css";
+import './style.css'
+import { ToastsContainer, ToastsStore, ToastsContainerPosition } from 'react-toasts';
 
 // const FormSection = styled.form`
 //   display: flex;
@@ -60,17 +61,17 @@ const Register = () => {
   const [phone, setPhone] = useState("");
 
   const onSubmit = (data) => {
-    console.log("Oieee")
     createClients(data)
       .then((response) => {
         if (response.status === 201) {
-          alert("Deu certo");
+          notifySuccess();
           return response.json();
         }
-        alert("Deu ruim");
+        
+        notifyError();
       })
       .catch((error) => {
-        alert("Deu ruim");
+        notifyError();
         errors(ErrorAlert(error));
       });
   };
@@ -90,6 +91,14 @@ const Register = () => {
         setValue("uf", data.uf);
       });
   };
+
+  const notifySuccess = () => {
+    ToastsStore.success('Cliente cadastrado com sucesso');
+  }
+
+  const notifyError = () => {
+    ToastsStore.error('Algo deu errado');
+  }
 
   return (
     <section>
@@ -154,9 +163,9 @@ const Register = () => {
           />
           {errors.cep && <p>Campo Obrigatório</p>}
           <Input
-            label="Municipio"
+            label="Município: "
             type="text"
-            placeholder="Municipio"
+            placeholder="Município"
             {...register("municipio", { required: true })}
           />
           {errors.municipio && <p>Campo Obrigatório</p>}
@@ -175,7 +184,7 @@ const Register = () => {
           />
           {errors.endereco && <p>Campo Obrigatório</p>}
           <Input
-            label="Numero:"
+            label="Número:"
             type="number"
             placeholder="Nº"
             {...register("numero", { required: true })}
@@ -185,7 +194,7 @@ const Register = () => {
             label="Complemento:"
             type="text"
             placeholder="Complemento"
-            {...register("complem", { required: false, min: 2 })}
+            {...register("complem", { required: true, min: 2 })}
           />
           <Input
             label="UF:"
@@ -204,6 +213,7 @@ const Register = () => {
         </div>
 
       </form>
+      <ToastsContainer store={ToastsStore} position={ToastsContainerPosition.TOP_RIGHT} />
     </section>
   );
 };
