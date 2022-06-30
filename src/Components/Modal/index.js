@@ -1,6 +1,6 @@
 import "./styles.css";
 import Button from "../Button";
-import PlusButton from "../../Components/PlusButton";
+
 
 export const Modal = ({ children, click, onClickYes, onClickNo, modal }) => {
   return (

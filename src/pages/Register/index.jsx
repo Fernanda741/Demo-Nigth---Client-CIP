@@ -103,7 +103,7 @@ const Register = () => {
   return (
     <section>
       <ComponentMenu />
-      <img className="Img" src={BannerImg} alt="Banner Image" />
+      <img className="Img" src={BannerImg} alt="" />
       <h3 className="Title">DADOS PESSOAIS</h3>
       <form className="form-section" onSubmit={handleSubmit(onSubmit)}>
         <div className="first-div">
