@@ -1,8 +1,12 @@
 import IconButton from "../IconButton";
 import "./style.css";
-import PlusButton from '../../Components/PlusButton'
 
-export const Client = ({ client, onClickDelete, onclickEdit, checkingAccount }) => {
+export const Client = ({
+  client,
+  onClickDelete,
+  onclickEdit,
+  onclickCreateAccount,
+}) => {
   return (
     <li className="client-root">
       <main className="client-info">
@@ -22,10 +26,11 @@ export const Client = ({ client, onClickDelete, onclickEdit, checkingAccount }) 
         className="btn-delete icon-delete"
         onClick={onClickDelete}
       />
-      <PlusButton
-      type="submit"
-      title="Conta Corrente"
-      onClick={checkingAccount} 
+      <IconButton
+        type="submit"
+        title="Conta Corrente"
+        className="btn-edit icon-edit"
+        onClick={onclickCreateAccount}
       />
     </li>
   );
