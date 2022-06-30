@@ -51,6 +51,7 @@ export const updtadeClients = (id, data) => {
 };
 
 
+
 export const checkingAccount = (id, data) =>{
 
   
@@ -64,6 +65,7 @@ export const checkingAccount = (id, data) =>{
     )
 }
 
+
 export const getAccounts = () => {
   return fetch(`${baseUrl}api/v1/contaCorrente`, {
     method: "GET",
@@ -71,7 +73,7 @@ export const getAccounts = () => {
       "Content-Type": "application/json",
     },
   });
-}
+};
 
 export const deleteAccount = (id) => {
   console.log(id);
@@ -81,5 +83,18 @@ export const deleteAccount = (id) => {
       "Content-Type": "application/json",
     },
   });
+};
+
+
+export const updtadeCount = (id, data) => {
+  return fetch(
+    `https://bank-services-challenge2.herokuapp.com/api/v1/contaCorrente${id}`,
+    {
+      mode: "no-cors",
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(data),
+    }
+  );
 };
 

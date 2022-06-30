@@ -1,14 +1,19 @@
+/* eslint-disable no-unused-vars */
 import React, { useState, useEffect } from "react";
 import ComponentMenu from "../../Components/Menu";
-import { deleteAccount, getAccounts } from "../../api/index";
+import { deleteAccount, getAccounts, updtadeCount } from "../../api/index";
 import { Account } from "../../Components/Account";
 import { SearchBar } from "../../Components/SearchBar";
-import { Modal } from "../../Components/Modal";
+import { Modal, ModalEdit } from "../../Components/Modal";
+import { FormCount } from "../../Components/FormCount";
 
 export default function BillCorrent() {
   const [accounts, setAccounts] = useState([]);
   const [modal, setModal] = useState(false);
   const [deletingAccount, setDeletingAccount] = useState(-1);
+  const [modalEdit, setModalEdit] = useState(false);
+  const [editAccout, setEditAccount] = useState("");
+  const AccountEditData = accounts.find((item) => item.id === editAccout);
 
   useEffect(() => {
     getAccounts()
@@ -26,6 +31,14 @@ export default function BillCorrent() {
       }
     });
   };
+  const handleEditAccount = (id, data) => {
+    updtadeCount(id, data).then((response) => {
+      if (response.status === 200) {
+        return response.json();
+      }
+      setModalEdit(false);
+    });
+  };
 
   return (
     <>
@@ -38,13 +51,14 @@ export default function BillCorrent() {
             return (
               <div key={item.id}>
                 <Account
-                  agencia={item.agencia}
-                  nomeBanco={item.nomeBanco}
-                  conta={item.conta}
-                  cliente={item.cliente}
+                  accounts={item}
                   onClickDelete={() => {
                     setModal(true);
                     setDeletingAccount(item.id);
+                  }}
+                  onclickEdit={() => {
+                    setModalEdit(true);
+                    setEditAccount(item.id);
                   }}
                 />
               </div>
@@ -59,6 +73,9 @@ export default function BillCorrent() {
         >
           Você tem certeza que deseja excluir esta conta?
         </Modal>
+        <ModalEdit modal={modalEdit} onClickNo={() => setModalEdit(false)}>
+          <FormCount account={AccountEditData} onSubmit={handleEditAccount} />
+        </ModalEdit>
       </section>
     </>
   );
