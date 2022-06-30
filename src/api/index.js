@@ -16,8 +16,8 @@ export const createClients = (data) => {
   return fetch(`${baseUrl}api/v1/cliente`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(data),
-  });
+    body: JSON.stringify(data),    
+  });  
 };
 
 export const getClients = () => {
@@ -50,6 +50,22 @@ export const updtadeClients = (id, data) => {
   );
 };
 
+
+
+export const checkingAccount = (id, data) =>{
+
+  
+
+  return fetch (
+     `${baseUrl}/api/v1/contaCorrente${id}`,{
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body:JSON.stringify(data),
+     }
+    )
+}
+
+
 export const getAccounts = () => {
   return fetch(`${baseUrl}api/v1/contaCorrente`, {
     method: "GET",
@@ -69,6 +85,7 @@ export const deleteAccount = (id) => {
   });
 };
 
+
 export const updtadeCount = (id, data) => {
   return fetch(
     `https://bank-services-challenge2.herokuapp.com/api/v1/contaCorrente${id}`,
@@ -80,3 +97,4 @@ export const updtadeCount = (id, data) => {
     }
   );
 };
+
