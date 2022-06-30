@@ -1,5 +1,6 @@
 import "./styles.css";
 import Button from "../Button";
+import PlusButton from '../../Components/PlusButton'
 
 export const Modal = ({ children, click, onClickYes, onClickNo, modal }) => {
   return (
@@ -45,3 +46,27 @@ export const ModalEdit = ({ children, onClickNo, modal }) => {
     </>
   );
 };
+
+export const ModalCheckingAccount = ({ children, click, modal }) => {
+  return(
+    <>
+      {modal && (
+        <div className="modal-container" onClick={click}>
+        <div className="modal">
+          <div className="modal-content">
+            <p>{children}</p>
+            <div className="modal-buttons">
+                <PlusButton className="button-no">
+                  
+                </PlusButton>
+              </div>            
+          </div>
+        </div>
+      </div>
+      )}
+    </>
+  )
+}
+
+
+
