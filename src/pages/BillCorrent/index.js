@@ -33,10 +33,9 @@ export default function BillCorrent() {
   };
   const handleEditAccount = (id, data) => {
     updtadeCount(id, data).then((response) => {
-      if (response.status === 200) {
-        return response.json();
+      if (response.status === 201) {
+        setModalEdit(false);
       }
-      setModalEdit(false);
     });
   };
 
