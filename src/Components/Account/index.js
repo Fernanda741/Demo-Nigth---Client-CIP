@@ -20,6 +20,7 @@ export const Account = ({
         <p>Conta: {accounts.conta}</p>
         <p>Cliente:{accounts.cliente.nome}</p>
         <p>Cpf:{accounts.cliente.cpf}</p>
+        <p>Nome do Banco:{accounts.nomeBanco}</p>
       </main>
       <IconButton
         type="submit"
