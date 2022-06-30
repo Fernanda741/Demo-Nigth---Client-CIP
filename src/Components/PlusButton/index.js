@@ -1,10 +1,11 @@
 import React from 'react';
 import './style.css'
 
-export default function PlusButton () {
+export default function PlusButton ({onClick}) {
     return (
         <>
-        <button className="plus-button">+</button>
+        <button 
+        onClick={onClick} className="plus-button">+</button>
         </>
     )
 }
