@@ -9,7 +9,7 @@ export const ErrorAlert = (response) => {
     case 404:
       return <p>Usuário não encontrado</p>;
     default:
-      return <p>Ops! Algo deu errado</p>;
+      return <p>Algo deu errado</p>;
   }
 };
 

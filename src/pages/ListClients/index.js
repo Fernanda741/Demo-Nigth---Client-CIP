@@ -1,11 +1,17 @@
 /* eslint-disable no-unused-vars */
 import { useEffect, useState } from "react";
 import { Client } from "../../Components/Client";
-import { deleteClient, getClients, updateClients } from "../../api/index";
-import { Modal, ModalEdit } from "../../Components/Modal";
+import {
+  deleteClient,
+  getClients,
+  updateClients,
+  checkingAccount,
+} from "../../api/index";
+import { Modal, ModalEdit, ModalCheckingAccount } from "../../Components/Modal";
 import { SearchBar } from "../../Components/SearchBar";
 import ComponentMenu from "../../Components/Menu";
 import { Form } from "../../Components/Form";
+import { FormCreateAccount } from "../../Components/FormCreateAccount";
 
 export const ListClients = () => {
   const [clients, setClients] = useState([]);
@@ -13,8 +19,13 @@ export const ListClients = () => {
   const [modalEdit, setModalEdit] = useState(false);
   const [deletingUser, setDeletingUser] = useState(-1);
   const [editClient, setEditClient] = useState("");
+  const [modalCheckingAccount, setModalCheckintAccount] = useState(false);
+  const [clientsAccount, setClientsAccount] = useState("");
 
   const clientEditData = clients.find((client) => client.id === editClient);
+  const clientCreateAccount = clients.find(
+    (clientAccount) => clientAccount.id === clientsAccount
+  );
   useEffect(() => {
     getClients()
       .then((response) => response.json())
@@ -41,6 +52,15 @@ export const ListClients = () => {
     });
   };
 
+  const handleCreateAccount = (id, data) => {
+    checkingAccount(id, data).then((response) => {
+      if (response.status === 200) {
+        return response.json();
+      }
+      setModalCheckintAccount(true);
+    });
+  };
+
   return (
     <>
       <ComponentMenu />
@@ -61,6 +81,10 @@ export const ListClients = () => {
                     setModalEdit(true);
                     setEditClient(client.id);
                   }}
+                  onclickCreateAccount={() => {
+                    setModalCheckintAccount(true);
+                    setClientsAccount(client.id);
+                  }}
                 ></Client>
               </div>
             );
@@ -78,6 +102,16 @@ export const ListClients = () => {
         <ModalEdit modal={modalEdit} onClickNo={() => setModalEdit(false)}>
           <Form client={clientEditData} onSubmit={handleEditClient} />
         </ModalEdit>
+
+        <ModalCheckingAccount
+          modal={modalCheckingAccount}
+          onClickNo={() => setModalCheckintAccount(false)}
+        >
+          <FormCreateAccount
+            accountCreate={clientCreateAccount}
+            onSubmit={handleCreateAccount}
+          />
+        </ModalCheckingAccount>
 
         {/* <ReactPaginate
           breakLabel="..."
