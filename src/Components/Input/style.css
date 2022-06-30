@@ -1,9 +1,10 @@
-.input-style{
-    margin-bottom: 10px;
-    margin-top: 3px;
-    border-color: black;
-    font-family: "Montserrat";
-    font-weight: bolder;
-    font-size: 15px;
+.input-style {
+  margin-bottom: 10px;
+  margin-top: 3px;
+  border-color: black;
+  font-family: 'Montserrat';
+  font-weight: bolder;
+  font-size: 15px;
+  height: 50px;
+  border: 1px solid #ababab;
 }
-    
