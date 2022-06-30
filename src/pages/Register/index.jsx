@@ -60,14 +60,17 @@ const Register = () => {
   const [phone, setPhone] = useState("");
 
   const onSubmit = (data) => {
+    console.log("Oieee")
     createClients(data)
       .then((response) => {
-        if (response.status === 200) {
+        if (response.status === 201) {
+          alert("Deu certo");
           return response.json();
         }
-        alert("Deu certo");
+        alert("Deu ruim");
       })
       .catch((error) => {
+        alert("Deu ruim");
         errors(ErrorAlert(error));
       });
   };
@@ -183,7 +186,7 @@ const Register = () => {
             label="Complemento:"
             type="text"
             placeholder="Complemento"
-            {...register("complem", { required: true, min: 2 })}
+            {...register("complem", { required: false, min: 2 })}
           />
           <Input
             label="UF:"
@@ -192,12 +195,12 @@ const Register = () => {
             {...register("uf", { required: true })}
           />
 
-          {/* <section>
+          <section>
             <div>
               <Button title="Confirmar Cadastro" type="submit" />
-              <Button ClassName title="Cancelar Cadastro" type="submit" />
+              <Button ClassName title="Cancelar Cadastro" type="button" />
             </div>
-          </section> */}
+          </section>
           {errors.uf && <p>campo obrigatório</p>}
         </div>
       </form>

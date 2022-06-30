@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 import { useEffect, useState } from "react";
 import { Client } from "../../Components/Client";
-import { deleteClient, getClients, updtadeClients } from "../../api/index";
+import { deleteClient, getClients, updateClients } from "../../api/index";
 import { Modal, ModalEdit } from "../../Components/Modal";
 import { SearchBar } from "../../Components/SearchBar";
 import ComponentMenu from "../../Components/Menu";
@@ -33,7 +33,7 @@ export const ListClients = () => {
   };
 
   const handleEditClient = (id, data) => {
-    updtadeClients(id, data).then((response) => {
+    updateClients(id, data).then((response) => {
       if (response.status === 200) {
         return response.json();
       }
