@@ -12,32 +12,33 @@
 }
 
 .first-div {
-    display: flex;
-    flex-direction: column;
-    padding-top: 0px;
-    padding-bottom: 0px;
-    padding-left: 200px;
-    padding-right: 200px;
+  display: flex;
+  flex-direction: column;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  width: 100%;
 }
-
+.first-div p {
+  color: rgba(193, 13, 25, 0.67);
+  font-weight: bold;
+}
 .first-div label {
-    margin-bottom: 10px;
-    margin-top: 3px;
-    border-color: black;
-    font-family: "Montserrat";
-    font-weight: bolder;
-    font-size: 15px;
+  margin-bottom: 10px;
+  margin-top: 3px;
+  border-color: black;
+  font-family: 'Montserrat';
+  font-weight: bolder;
+  font-size: 15px;
 }
 
 .first-div input {
   margin-bottom: 10px;
   margin-top: 3px;
-  border-color: black;
-  font-family: "Montserrat";
+  font-family: 'Montserrat';
   font-weight: bolder;
   font-size: 15px;
-  border-radius: 3px;
-  width: 250px;
+  border-radius: 5px;
+  width: 100%;
   padding: 5px;
 }
 
@@ -46,32 +47,56 @@
   flex-direction: column;
   padding-top: 0px;
   padding-bottom: 0px;
-  padding-right: 250px;
-  padding-left: 250px;
+  width: 100%;
+}
+.second-div button {
+  width: 240px;
 }
 
+.second-div p {
+  color: rgba(193, 13, 25, 0.67);
+  font-weight: bold;
+}
 .second-div label {
-    margin-bottom: 10px;
-    margin-top: 3px;
-    border-color: black;
-    font-family: "Montserrat";
-    font-weight: bolder;
-    font-size: 15px;
+  margin-bottom: 10px;
+  margin-top: 3px;
+  border-color: black;
+  font-family: 'Montserrat';
+  font-weight: bolder;
+  font-size: 15px;
 }
 
 .second-div input {
-    margin-bottom: 10px;
-    margin-top: 3px;
-    border-color: black;
-    font-family: "Montserrat";
-    font-weight: bolder;
-    font-size: 15px;
-    border-radius: 3px;
-    width: 250px;
-    padding: 5px;
+  margin-bottom: 10px;
+  margin-top: 3px;
+  font-family: 'Montserrat';
+  font-weight: bolder;
+  font-size: 15px;
+  border-radius: 5px;
+  width: 100%;
+  padding: 5px;
+}
+.first-col {
+  padding: 57px;
+  display: flex;
+  justify-content: center;
+  width: 50%;
+}
+.second-col {
+  padding: 57px;
+  display: flex;
+  justify-content: center;
+  flex-grow: 1;
+}
+.register-btn-group {
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
 }
 
-
+.register-btn-group button:nth-child(1) {
+  margin-right: 10%;
+}
 
 /* .form-section div section {
     margin-top: 20px;
@@ -101,8 +126,8 @@
   margin-left: 50px;
   font-size: 30px;
   color: #2f333b;
-} 
+}
 
-.Img{
+.Img {
   width: 100%;
 }
