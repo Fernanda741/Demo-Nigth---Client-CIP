@@ -121,18 +121,18 @@ const Register = () => {
           />
           {errors.dataNasc && <p>Campo Obrigatório</p>}
 
-          <Input
-            label="CPF:"
-            type="text"
-            placeholder="000.000.000-00"
-            {...register("cpf", {
-              required: "true",
-              validate: validarCpf,
-            })}
-            value={cpf}
-            onChange={(e) => setCpf(maskCPF(e.target.value))}
-          />
-          {errors.cpf && <p>Por favor, digite um CPF válido</p>}
+            <Input
+              label="CPF:"
+              type="text"
+              placeholder="000.000.000-00"
+              {...register("cpf", {
+                required: "true",
+                validate: validarCpf,
+              })}
+              value={cpf}
+              onChange={(e) => setCpf(maskCPF(e.target.value))}
+            />
+            {errors.cpf && <p>Por favor, digite um CPF válido</p>}
 
           <Input
             label="Email:"
@@ -202,6 +202,7 @@ const Register = () => {
           </section>
           {errors.uf && <p>Campo Obrigatório</p>}
         </div>
+
       </form>
     </section>
   );

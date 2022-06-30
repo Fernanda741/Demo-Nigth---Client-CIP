@@ -4,29 +4,15 @@ import Button from "../Button";
 
 export const FormCreateAccount = ({ accountCreate, onSubmit }) => {
   const { register, handleSubmit } = useForm();
+
   const onSubmitForm = (data) => {
     const body = {
       ...data,
-      id: accountCreate.id,
-      cliente: {
-        nome: accountCreate.cliente.nome,
-        cep: accountCreate.cliente.cep,
-        cpf: accountCreate.cliente.cpf,
-        telefone: accountCreate.cliente.telefone,
-        email: accountCreate.cliente.email,
-        municipio: accountCreate.cliente.municipio,
-        bairro: accountCreate.cliente.bairro,
-        codigo: accountCreate.cliente.codigo,
-        numero: accountCreate.cliente.numero,
-        complem: accountCreate.cliente.complem,
-        uf: accountCreate.cliente.uf,
-        dataNasc: accountCreate.cliente.dataNasc,
-        endereco: accountCreate.cliente.endereco,
-        id: accountCreate.cliente.id,
-      },
+
+      cliente: accountCreate,
     };
 
-    onSubmit(accountCreate.id, body);
+    onSubmit(body);
   };
   return (
     <form onSubmit={handleSubmit(onSubmitForm)}>

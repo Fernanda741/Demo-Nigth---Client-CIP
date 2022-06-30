@@ -52,8 +52,8 @@ export const ListClients = () => {
     });
   };
 
-  const handleCreateAccount = (id, data) => {
-    checkingAccount(id, data).then((response) => {
+  const handleCreateAccount = (data) => {
+    checkingAccount(data).then((response) => {
       if (response.status === 200) {
         return response.json();
       }

@@ -1,0 +1,17 @@
+.btn {
+  height: 46px;
+  border: 1px solid #ababab;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.btn-primary {
+  background: rgba(106, 204, 134, 0.81);
+  color: #2f333b;
+}
+
+.btn-secondary {
+  background: rgba(193, 13, 25, 0.67);
+  color: #2f333b;
+}
