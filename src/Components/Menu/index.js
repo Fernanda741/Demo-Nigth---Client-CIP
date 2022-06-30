@@ -1,5 +1,4 @@
 import React from 'react'
-import { useNavigate } from 'react-router-dom'
 import styled from 'styled-components'
 import CIPLogo from '../../Img/cip-logo.png'
 import './style.css'
@@ -26,12 +25,7 @@ const ImgLogo = styled.img `
 
 
 export default function ComponentMenu () {
-    const navigate = useNavigate ();
-
-    const handleSubmit = async (e) => {
-        e.preventDefault ();
-        navigate("/register")
-    }
+    
 
     return (
         <>

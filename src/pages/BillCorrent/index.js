@@ -3,12 +3,13 @@ import React, { useState, useEffect } from "react";
 import ComponentMenu from "../../Components/Menu";
 import { deleteAccount, getAccounts, updtadeCount } from "../../api/index";
 import { Account } from "../../Components/Account";
-import { SearchBar } from "../../Components/SearchBar";
+import { SearchBarAccount } from "../../Components/SearchBar";
 import { Modal, ModalEdit } from "../../Components/Modal";
 import { FormCount } from "../../Components/FormCount";
 
 export default function BillCorrent() {
   const [accounts, setAccounts] = useState([]);
+  const [allAccounts, setallAccounts] = useState([]);
   const [modal, setModal] = useState(false);
   const [deletingAccount, setDeletingAccount] = useState(-1);
   const [modalEdit, setModalEdit] = useState(false);
@@ -19,6 +20,7 @@ export default function BillCorrent() {
     getAccounts()
       .then((response) => response.json())
       .then((data) => {
+        setallAccounts(data.content);
         setAccounts(data.content);
       });
   }, []);
@@ -38,11 +40,24 @@ export default function BillCorrent() {
       }
     });
   };
+  const onSearch = (data) => {
+    console.log(accounts);
+    const filteredAccounts = accounts.filter(
+      (client) => client.agencia === data.agencia || client.conta === data.conta
+    );
+    console.log(filteredAccounts);
+    setAccounts(filteredAccounts);
+  };
+
+  const onResetSearch = () => {
+    console.log(allAccounts);
+    setAccounts([...allAccounts]);
+  };
 
   return (
     <>
       <ComponentMenu />
-      <SearchBar />
+      <SearchBarAccount onSubmit={onSearch} onReset={onResetSearch} />
       <h1 id="title">LISTA DE CONTAS</h1>
       <section className="container-accounts">
         <ul className="all-accounts">
