@@ -60,14 +60,17 @@ const Register = () => {
   const [phone, setPhone] = useState("");
 
   const onSubmit = (data) => {
+    console.log("Oieee")
     createClients(data)
       .then((response) => {
-        if (response.status === 200) {
+        if (response.status === 201) {
+          alert("Deu certo");
           return response.json();
         }
-        alert("Deu certo");
+        alert("Deu ruim");
       })
       .catch((error) => {
+        alert("Deu ruim");
         errors(ErrorAlert(error));
       });
   };
@@ -94,30 +97,29 @@ const Register = () => {
       <img className="Img" src={BannerImg} alt="Banner Image" />
       <h3 className="Title">DADOS PESSOAIS</h3>
       <form className="form-section" onSubmit={handleSubmit(onSubmit)}>
-        <section className="first-col">
-          <div className="first-div">
-            <Input
-              label="Nome:"
-              type="text"
-              placeholder="Nome Completo"
-              {...register("nome", { required: true })}
-            />
-            {errors.name && <p>campo obrigatório</p>}
-            <Input
-              label="Telefone:"
-              type="tel"
-              {...register("telefone", { required: true, max: 11 })}
-              value={phone}
-              onChange={(e) => setPhone(maskPhone(e.target.value))}
-            />
-            {errors.telefone && <p>campo obrigatório</p>}
+        <div className="first-div">
+          <Input
+            label="Nome:"
+            type="text"
+            placeholder="Nome Completo"
+            {...register("nome", { required: true })}
+          />
+          {errors.name && <p>Campo Obrigatório</p>}
+          <Input
+            label="Telefone:"
+            type="tel"
+            {...register("telefone", { required: true, max: 11 })}
+            value={phone}
+            onChange={(e) => setPhone(maskPhone(e.target.value))}
+          />
+          {errors.telefone && <p>Campo Obrigatório</p>}
 
-            <Input
-              label="Data de Nascimento:"
-              type="date"
-              {...register("dataNasc", { required: true })}
-            />
-            {errors.dataNasc && <p>campo obrigatório</p>}
+          <Input
+            label="Data de Nascimento:"
+            type="date"
+            {...register("dataNasc", { required: true })}
+          />
+          {errors.dataNasc && <p>Campo Obrigatório</p>}
 
             <Input
               label="CPF:"
@@ -132,77 +134,75 @@ const Register = () => {
             />
             {errors.cpf && <p>Por favor, digite um CPF válido</p>}
 
-            <Input
-              label="Email:"
-              type="email"
-              placeholder="user@user.com"
-              {...register("email", {
-                required: true,
-                pattern: emailRegExp,
-              })}
-            />
-            {errors.email && <p>campo obrigatório</p>}
-          </div>
-        </section>
-        <section className="second-col">
-          <div className="second-div">
-            <Input
-              label="Cep:"
-              type="text"
-              placeholder="Cep"
-              {...register("cep", { onBlur: checkCEP, required: true })}
-            />
-            {errors.cep && <p>campo obrigatório</p>}
-            <Input
-              label="Municipio"
-              type="text"
-              placeholder="Municipio"
-              {...register("municipio", { required: true })}
-            />
-            {errors.municipio && <p>campo obrigatório</p>}
-            <Input
-              label="Bairro:"
-              type="text"
-              placeholder="Bairro"
-              {...register("bairro", { required: true })}
-            />
-            {errors.bairro && <p>campo obrigatório</p>}
-            <Input
-              label="Rua:"
-              type="text"
-              placeholder="Rua"
-              {...register("endereco", { required: true })}
-            />
-            {errors.endereco && <p>campo obrigatório</p>}
-            <Input
-              label="Numero:"
-              type="number"
-              placeholder="Nº"
-              {...register("numero", { required: true })}
-            />
-            {errors.numero && <p>campo obrigatório</p>}
-            <Input
-              label="Complemento:"
-              type="text"
-              placeholder="Complemento"
-              {...register("complem", { required: true, min: 2 })}
-            />
-            <Input
-              label="UF:"
-              type="text"
-              placeholder="UF"
-              {...register("uf", { required: true })}
-            />
+          <Input
+            label="Email:"
+            type="email"
+            placeholder="user@user.com"
+            {...register("email", {
+              required: true,
+              pattern: emailRegExp,
+            })}
+          />
+          {errors.email && <p>Campo Obrigatório</p>}
+        </div>
+        <div className="second-div">
+          <Input
+            label="Cep:"
+            type="text"
+            placeholder="Cep"
+            {...register("cep", { onBlur: checkCEP, required: true })}
+          />
+          {errors.cep && <p>Campo Obrigatório</p>}
+          <Input
+            label="Municipio"
+            type="text"
+            placeholder="Municipio"
+            {...register("municipio", { required: true })}
+          />
+          {errors.municipio && <p>Campo Obrigatório</p>}
+          <Input
+            label="Bairro:"
+            type="text"
+            placeholder="Bairro"
+            {...register("bairro", { required: true })}
+          />
+          {errors.bairro && <p>Campo Obrigatório</p>}
+          <Input
+            label="Rua:"
+            type="text"
+            placeholder="Rua"
+            {...register("endereco", { required: true })}
+          />
+          {errors.endereco && <p>Campo Obrigatório</p>}
+          <Input
+            label="Numero:"
+            type="number"
+            placeholder="Nº"
+            {...register("numero", { required: true })}
+          />
+          {errors.numero && <p>Campo Obrigatório</p>}
+          <Input
+            label="Complemento:"
+            type="text"
+            placeholder="Complemento"
+            {...register("complem", { required: false, min: 2 })}
+          />
+          <Input
+            label="UF:"
+            type="text"
+            placeholder="UF"
+            {...register("uf", { required: true })}
+          />
 
-            <section>
-              <div className="register-btn-group">
-                <Button buttonClass="btn-primary" title="Confirmar Cadastro" type="submit" />
-                <Button buttonClass="btn-secondary" title="Cancelar Cadastro" type="reset" />
-              </div>
-            </section>
-            {errors.uf && <p>campo obrigatório</p>}
-          </div>
-        </section>
+          <section>
+            <div>
+              <Button title="Confirmar Cadastro" type="submit" />
+              <Button ClassName title="Cancelar Cadastro" type="reset" />
+            </div>
+          </section>
+          {errors.uf && <p>Campo Obrigatório</p>}
+        </div>
+
       </form>
     </section>
   );

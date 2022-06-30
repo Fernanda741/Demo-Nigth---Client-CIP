@@ -11,6 +11,10 @@ const TextBanner = styled.h1`
     position: absolute;
     color: white;
     background-color: rgba(0,0,0,0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
 `
 
 const BannerDiv = styled.div`
@@ -23,7 +27,8 @@ export default function DescriptionArea () {
     return(
         <>
             <BannerDiv>
-                <TextBanner>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque ac libero commodo, pretium eros at, sagittis urna. Pellentesque blandit odio vitae odio dignissim, vel mollis lorem sollicitudin. Maecenas dolor odio, auctor id scelerisque vel, sollicitudin eget massa. Duis non sapien enim.</TextBanner>
+                <TextBanner>Bem vindo(a) ao Portal da Câmara Interbancária de Pagamentos(CIP)
+                    <p>Nesta seção você pode consultar, criar e alterar dados de Clientes e Contas Correntes.</p></TextBanner>
                 <ImgBanner src= {BannerPage} alt="Banner"/>
             </BannerDiv>
         </>

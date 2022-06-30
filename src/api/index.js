@@ -3,7 +3,7 @@ import { faker } from "@faker-js/faker";
 const baseUrl = "https://bank-services-challenge2.herokuapp.com/";
 
 export const createClients = (data) => {
-  data.dataNasc = new Date(data.dataNasc).toISOString();
+  data.dataNasc = new Date(data.dataNasc);
   data.cep = data.cep.replace("-", "");
   data.cpf = data.cpf.replace(".", "").replace(".", "").replace("-", "");
   data.telefone = data.telefone
@@ -39,7 +39,7 @@ export const deleteClient = (id) => {
   });
 };
 
-export const updtadeClients = (id, data) => {
+export const updateClients = (id, data) => {
   return fetch(
     `https://bank-services-challenge2.herokuapp.com/api/v1/cliente/${id}`,
     {

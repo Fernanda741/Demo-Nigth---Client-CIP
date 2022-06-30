@@ -4,7 +4,7 @@ import { Client } from "../../Components/Client";
 import {
   deleteClient,
   getClients,
-  updtadeClients,
+  updateClients,
   checkingAccount,
 } from "../../api/index";
 import { Modal, ModalEdit, ModalCheckingAccount } from "../../Components/Modal";
@@ -44,7 +44,7 @@ export const ListClients = () => {
   };
 
   const handleEditClient = (id, data) => {
-    updtadeClients(id, data).then((response) => {
+    updateClients(id, data).then((response) => {
       if (response.status === 200) {
         setModalEdit(false);
       }

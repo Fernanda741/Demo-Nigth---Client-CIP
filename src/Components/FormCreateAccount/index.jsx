@@ -17,32 +17,32 @@ export const FormCreateAccount = ({ accountCreate, onSubmit }) => {
   return (
     <form onSubmit={handleSubmit(onSubmitForm)}>
       <Input
-        label="agencia"
-        placeholder="agencia"
+        label="Agência: "
+        placeholder="Agência"
         {...register("agencia", { required: true })}
       />
       <Input
-        label="Conta:"
-        placeholder="conta"
+        label="Conta: "
+        placeholder="Conta"
         {...register("conta", { required: true })}
       />
       <Input
-        label="Cod do Banco"
-        placeholder="Codigo do Banco"
+        label="Cód. Banco: "
+        placeholder="Código do Banco"
         {...register("numBanco", { required: true })}
       />
       <Input
-        label="Nome Banco:"
-        placeholder="nome do Banco"
+        label="Nome Banco: "
+        placeholder="Banco"
         {...register("nomeBanco", { required: true })}
       />
       <Input
-        label="Senha:"
-        placeholder="senha"
+        label="Senha: "
+        placeholder="Senha"
         {...register("senha", { required: true })}
       />
       <Button type="submit">Cadastrar</Button>
-      <Button type="reset">Resetar</Button>
+      <Button type="reset">Limpar</Button>
     </form>
   );
 };

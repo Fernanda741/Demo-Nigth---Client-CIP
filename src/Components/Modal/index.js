@@ -36,7 +36,7 @@ export const ModalEdit = ({ children, onClickNo, modal }) => {
               <div>{children}</div>
               <div className="modal-buttons">
                 <Button className="button-no" onClick={onClickNo}>
-                  Não Salvar
+                  Cancelar
                 </Button>
               </div>
             </div>
@@ -57,7 +57,7 @@ export const ModalCheckingAccount = ({ children, onClickNo, modal }) => {
               <div>{children}</div>
               <div className="modal-buttons">
                 <Button className="button-no" onClick={onClickNo}>
-                  Não Salvar
+                  Cancelar
                 </Button>
               </div>
             </div>
