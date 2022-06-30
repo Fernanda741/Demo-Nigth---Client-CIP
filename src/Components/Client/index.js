@@ -1,5 +1,5 @@
-import IconButton from "../IconButton";
-import "./style.css";
+import IconButton from '../IconButton';
+import './style.css';
 
 export const Client = ({
   client,
@@ -18,8 +18,7 @@ export const Client = ({
         type="submit"
         className="btn-edit icon-edit"
         title="Editar"
-        onClick={onclickEdit} 
-        
+        onClick={onclickEdit}
       />
       <IconButton
         type="submit"
@@ -30,7 +29,7 @@ export const Client = ({
       <IconButton
         type="submit"
         title="Conta Corrente"
-        className="btn-edit icon-edit"
+        className="btn-add icon-add"
         onClick={onclickCreateAccount}
       />
     </li>

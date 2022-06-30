@@ -10,6 +10,13 @@
   background-repeat: no-repeat;
   background-position: center;
 }
+.icon-add {
+  background-color: rgba(106, 204, 134, 0.81) !important;
+  background: url(../../Img/add.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 24px;
+}
 
 .icon-edit:hover {
   background-color: rgba(17, 84, 146, 0.7);
