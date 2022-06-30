@@ -1,15 +1,14 @@
-.container-clients {
-  list-style-type: none;
-}
-
-.client-root {
+.account-root {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding-bottom: 20px;
 }
+.container-clients {
+  list-style-type: none;
+}
 
-.client-info {
+.account-info {
   background-color: white;
   list-style-type: none;
   color: black;
@@ -22,7 +21,7 @@
   display: flex;
 }
 
-.client-info span:nth-child(1) {
+.account-info span:nth-child(1) {
   flex-grow: 1;
   height: 100%;
   display: flex;
@@ -30,13 +29,19 @@
   margin-left: 20px;
   text-transform: uppercase;
 }
-.client-info span:nth-child(2) {
+.account-info span:nth-child(2) {
   width: 25%;
   height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
   border-left: 2px solid #b6b6b6;
+  background: linear-gradient(
+      0deg,
+      rgba(106, 204, 134, 0.81),
+      rgba(106, 204, 134, 0.81)
+    ),
+    linear-gradient(0deg, #ababab, #ababab);
 }
 
 .btn-edit {
@@ -48,6 +53,7 @@
 .btn-delete {
   width: 50px;
   height: 44px;
+  margin-right: 12px;
 }
 .btn-add {
   margin-right: 12px;

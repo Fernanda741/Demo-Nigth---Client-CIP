@@ -1,26 +1,26 @@
 /* eslint-disable no-unused-vars */
-import { useEffect, useState } from "react";
-import { Client } from "../../Components/Client";
+import { useEffect, useState } from 'react';
+import { Client } from '../../Components/Client';
 import {
   deleteClient,
   getClients,
   updtadeClients,
   checkingAccount,
-} from "../../api/index";
-import { Modal, ModalEdit, ModalCheckingAccount } from "../../Components/Modal";
-import { SearchBar } from "../../Components/SearchBar";
-import ComponentMenu from "../../Components/Menu";
-import { Form } from "../../Components/Form";
-import { FormCreateAccount } from "../../Components/FormCreateAccount";
+} from '../../api/index';
+import { Modal, ModalEdit, ModalCheckingAccount } from '../../Components/Modal';
+import { SearchBar } from '../../Components/SearchBar';
+import ComponentMenu from '../../Components/Menu';
+import { Form } from '../../Components/Form';
+import { FormCreateAccount } from '../../Components/FormCreateAccount';
 
 export const ListClients = () => {
   const [clients, setClients] = useState([]);
   const [modal, setModal] = useState(false);
   const [modalEdit, setModalEdit] = useState(false);
   const [deletingUser, setDeletingUser] = useState(-1);
-  const [editClient, setEditClient] = useState("");
+  const [editClient, setEditClient] = useState('');
   const [modalCheckingAccount, setModalCheckintAccount] = useState(false);
-  const [clientsAccount, setClientsAccount] = useState("");
+  const [clientsAccount, setClientsAccount] = useState('');
 
   const clientEditData = clients.find((client) => client.id === editClient);
   const clientCreateAccount = clients.find(
@@ -71,21 +71,23 @@ export const ListClients = () => {
           {clients.map((client) => {
             return (
               <div key={client.id}>
-                <Client
-                  client={client}
-                  onClickDelete={() => {
-                    setModal(true);
-                    setDeletingUser(client.id);
-                  }}
-                  onclickEdit={() => {
-                    setModalEdit(true);
-                    setEditClient(client.id);
-                  }}
-                  onclickCreateAccount={() => {
-                    setModalCheckintAccount(true);
-                    setClientsAccount(client.id);
-                  }}
-                ></Client>
+                <section className="btn-icons">
+                  <Client
+                    client={client}
+                    onClickDelete={() => {
+                      setModal(true);
+                      setDeletingUser(client.id);
+                    }}
+                    onclickEdit={() => {
+                      setModalEdit(true);
+                      setEditClient(client.id);
+                    }}
+                    onclickCreateAccount={() => {
+                      setModalCheckintAccount(true);
+                      setClientsAccount(client.id);
+                    }}
+                  ></Client>
+                </section>
               </div>
             );
           })}
