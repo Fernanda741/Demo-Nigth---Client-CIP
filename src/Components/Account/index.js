@@ -1,17 +1,6 @@
 import IconButton from "../IconButton";
 
-export const Account = ({
-  // id,
-  // agencia,
-  // nomeBanco,
-  // numBanco,
-  // conta,
-  // senha,
-  accounts,
-  cliente,
-  onClickDelete,
-  onclickEdit,
-}) => {
+export const Account = ({ accounts, onClickDelete, onclickEdit }) => {
   return (
     <li className="account-root">
       <main className="account-info">

@@ -8,16 +8,16 @@ import { ErrorAlert, ErrorMessages } from "../../Components/ErrorComponent";
 import styled from "styled-components";
 import ComponentMenu from "../../Components/Menu";
 import BannerImg from "../../Img/banner-register.png";
-import { useState } from "react";
-import './style.css'
+import { useState, useCallback, useEffect } from "react";
+import "./style.css";
 
-// const FormSection = styled.form`  
+// const FormSection = styled.form`
 //   display: flex;
 //   width: 100%;
 //   justify-content: center;
 //   background-color: #f3f3f3;
 //   flex-wrap: wrap;
-  
+
 //     > input {
 //       border-radius: 3px;
 //       width: 25vw;
@@ -89,7 +89,6 @@ const Register = () => {
   };
 
   return (
-    
     <section>
       <ComponentMenu />
       <img className="Img" src={BannerImg} alt="Banner Image" />
@@ -192,12 +191,12 @@ const Register = () => {
             {...register("uf", { required: true })}
           />
 
-          {/* <section>
+          <section>
             <div>
               <Button title="Confirmar Cadastro" type="submit" />
-              <Button ClassName title="Cancelar Cadastro" type="submit" />
+              <Button ClassName title="Cancelar Cadastro" type="reset" />
             </div>
-          </section> */}
+          </section>
           {errors.uf && <p>campo obrigatório</p>}
         </div>
       </form>
