@@ -12,7 +12,7 @@ export const Form = ({ client, onSubmit }) => {
     onSubmit(client.id, body);
   };
   return (
-    <form onSubmit={handleSubmit(onSubmitForm)}>
+    <form onSubmit={handleSubmit(onSubmitForm)} className="form-modal">
       <Input {...register("nome", { value: client.nome })} />
       <Input {...register("telefone", { value: client.telefone })} />
       <Input

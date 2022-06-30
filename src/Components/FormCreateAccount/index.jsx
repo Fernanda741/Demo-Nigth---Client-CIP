@@ -29,7 +29,7 @@ export const FormCreateAccount = ({ accountCreate, onSubmit }) => {
     onSubmit(accountCreate.id, body);
   };
   return (
-    <form onSubmit={handleSubmit(onSubmitForm)}>
+    <form onSubmit={handleSubmit(onSubmitForm)} className="modal-form">
       <Input
         label="agencia"
         placeholder="agencia"
