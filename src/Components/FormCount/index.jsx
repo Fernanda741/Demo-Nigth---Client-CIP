@@ -7,6 +7,26 @@ export const FormCount = ({ account, onSubmit }) => {
   const onSubmitForm = (data) => {
     const body = {
       ...data,
+      id: account.id,
+      cliente: {
+        nome: account.cliente.nome,
+        cep: account.cliente.cep,
+        cpf: account.cliente.cpf,
+        telefone: account.cliente.telefone,
+        email: account.cliente.email,
+        municipio: account.cliente.municipio,
+        bairro: account.cliente.bairro,
+        codigo: account.cliente.codigo,
+        numero: account.cliente.numero,
+        complem: account.cliente.complem,
+        uf: account.cliente.uf,
+        dataNasc: account.cliente.dataNasc,
+        endereco: account.cliente.endereco,
+        id: account.cliente.id,
+      },
+    };
+
+    /* ...data,
       nome: account.cliente.nome,
       cep: account.cliente.cep,
       cpf: account.cliente.cpf,
@@ -19,7 +39,7 @@ export const FormCount = ({ account, onSubmit }) => {
       complement: account.cliente.complement,
       uf: account.cliente.uf,
       data: account.cliente.dataNasc,
-    };
+    };*/
     onSubmit(account.id, body);
   };
   return (
@@ -37,6 +57,7 @@ export const FormCount = ({ account, onSubmit }) => {
         label="Nome Banco:"
         {...register("nomeBanco", { value: account.nomeBanco })}
       />
+      <Input label="Senha:" {...register("senha", { value: account.senha })} />
       <Button type="submit">Atualizar</Button>
     </form>
   );
