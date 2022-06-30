@@ -50,8 +50,8 @@ export const updtadeClients = (id, data) => {
   );
 };
 
-export const checkingAccount = (id, data) => {
-  return fetch(`${baseUrl}/api/v1/contaCorrente/${id}`, {
+export const checkingAccount = (data) => {
+  return fetch(`${baseUrl}api/v1/contaCorrente`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(data),
