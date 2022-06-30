@@ -26,20 +26,6 @@ export const FormCount = ({ account, onSubmit }) => {
       },
     };
 
-    /* ...data,
-      nome: account.cliente.nome,
-      cep: account.cliente.cep,
-      cpf: account.cliente.cpf,
-      telefone: account.cliente.telefone,
-      email: account.cliente.email,
-      municipio: account.cliente.municipio,
-      bairro: account.cliente.endereco,
-      codigo: account.cliente.codigo,
-      numero: account.cliente.numero,
-      complement: account.cliente.complement,
-      uf: account.cliente.uf,
-      data: account.cliente.dataNasc,
-    };*/
     onSubmit(account.id, body);
   };
   return (
