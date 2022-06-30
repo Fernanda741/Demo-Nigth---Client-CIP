@@ -46,18 +46,16 @@ export const ListClients = () => {
   const handleEditClient = (id, data) => {
     updtadeClients(id, data).then((response) => {
       if (response.status === 200) {
-        return response.json();
+        setModalEdit(false);
       }
-      setModalEdit(true);
     });
   };
 
   const handleCreateAccount = (data) => {
     checkingAccount(data).then((response) => {
-      if (response.status === 200) {
-        return response.json();
+      if (response.status === 201) {
+        setModalCheckintAccount(false);
       }
-      setModalCheckintAccount(true);
     });
   };
 
