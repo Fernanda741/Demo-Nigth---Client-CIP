@@ -4,9 +4,9 @@ import PlusButton from "../../Components/PlusButton";
 
 export const Modal = ({ children, click, onClickYes, onClickNo, modal }) => {
   return (
-    <>
+    <> 
       {modal && (
-        <div className="modal-container" onClick={click}>
+        <div className="modal-container" id="modal-container" onClick={click}>
           <div className="modal">
             <div className="modal-content">
               <p>{children}</p>
@@ -30,7 +30,7 @@ export const ModalEdit = ({ children, onClickNo, modal }) => {
   return (
     <>
       {modal && (
-        <div className="modal-container">
+        <div className="modal-container" id="modal-container" >
           <div className="modal">
             <div className="modal-content">
               <div>{children}</div>
@@ -51,7 +51,7 @@ export const ModalCheckingAccount = ({ children, onClickNo, modal }) => {
   return (
     <>
       {modal && (
-        <div className="modal-container">
+        <div className="modal-container" id="modal-container">
           <div className="modal">
             <div className="modal-content">
               <div>{children}</div>

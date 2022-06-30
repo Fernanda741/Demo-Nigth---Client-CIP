@@ -18,7 +18,8 @@ export const Client = ({
         type="submit"
         className="btn-edit icon-edit"
         title="Editar"
-        onClick={onclickEdit}
+        onClick={onclickEdit} 
+        
       />
       <IconButton
         type="submit"
