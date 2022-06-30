@@ -2,6 +2,9 @@ import React from 'react'
 import styled from 'styled-components'
 import CIPLogo from '../../Img/cip-logo.png'
 import './style.css'
+import { Link } from "react-router-dom";
+
+
 
 const CentralContainer = styled.div`
     width: 100%;
@@ -35,13 +38,13 @@ export default function ComponentMenu () {
                 <div>
                     <div className="dropdown">
                         <button className="dropbtn">CLIENTE</button>                        
-                        <div className="dropdown-content">
-                            <a href="/register">Cadastrar</a>
-                            <a href="/list-clients">Consultar</a>
+                        <div className="dropdown-content">                            
+                            <Link  to="/register"> Cadastrar </Link>                           
+                            <Link  to="/list-clients"> Consultar </Link>
                         </div>                        
                     </div>
-                    <div>
-                       <a href="/bill-corrent"><button className="dropbtn2">CONTA CORRENTE</button></a> 
+                    <div>                     
+                       <Link  to="/bill-corrent"><button className="dropbtn2">CONTA CORRENTE</button></Link>
                     </div> 
                 </div>
             </NavbarMenu>
