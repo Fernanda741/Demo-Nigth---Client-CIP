@@ -1,32 +1,64 @@
 import React, { useState, useEffect } from "react";
 import ComponentMenu from "../../Components/Menu";
-import { CheckingAccount } from "../../Components/CheckingAccount";
-import { deleteClient, getClients } from "../../api/index";
+import { deleteAccount, getAccounts } from "../../api/index";
+import { Account } from "../../Components/Account";
+import { SearchBar } from "../../Components/SearchBar";
+import { Modal } from "../../Components/Modal";
 
 export default function BillCorrent() {
-  const [clients, setClients] = useState([]);
+  const [accounts, setAccounts] = useState([]);
+  const [modal, setModal] = useState(false);
+  const [deletingAccount, setDeletingAccount] = useState(-1);
 
   useEffect(() => {
-    getClients()
+    getAccounts()
       .then((response) => response.json())
       .then((data) => {
-        setClients(data.content);
+        setAccounts(data.content);
       });
   }, []);
+
+  const handleDeleteAccount = (id) => {
+    deleteAccount(id).then((response) => {
+      if (response.status === 200) {
+        const filteredAccounts = accounts.filter((item) => item.id !== id);
+        setAccounts(filteredAccounts);
+      }
+    });
+  };
 
   return (
     <>
       <ComponentMenu />
-       <section>
-        <ul>
-          {clients.map((client) => {
+      <SearchBar />
+      <h1 id="title">LISTA DE CONTAS</h1>
+      <section className="container-accounts">
+        <ul className="all-accounts">
+          {accounts.map((item) => {
             return (
-              <div key={client.id}>
-                <CheckingAccount client={client}></CheckingAccount>
+              <div key={item.id}>
+                <Account
+                  agencia={item.agencia}
+                  nomeBanco={item.nomeBanco}
+                  conta={item.conta}
+                  cliente={item.cliente}
+                  onClickDelete={() => {
+                    setModal(true);
+                    setDeletingAccount(item.id);
+                  }}
+                />
               </div>
             );
           })}
         </ul>
+        <Modal
+          modal={modal}
+          click={() => setModal(false)}
+          onClickYes={() => handleDeleteAccount(deletingAccount)}
+          onClickNo={() => setModal(false)}
+        >
+          Você tem certeza que deseja excluir esta conta?
+        </Modal>
       </section>
     </>
   );

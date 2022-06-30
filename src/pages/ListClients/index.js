@@ -8,7 +8,6 @@ import ComponentMenu from "../../Components/Menu";
 import { Form } from "../../Components/Form";
 import PlusButton from '../../Components/PlusButton'
 
-
 export const ListClients = () => {
   const [clients, setClients] = useState([]);
   const [modal, setModal] = useState(false);
@@ -27,15 +26,12 @@ export const ListClients = () => {
   }, []);
 
   const handleDeleteClient = (id) => {
-    console.log(id);
-    deleteClient(id)
-      .then((response) => {
-        response.json();
-      })
-
-      .then((data) => {
-        console.log(data, "dataaa");
-      });
+    deleteClient(id).then((response) => {
+      if (response.status === 200) {
+        const filteredClients = clients.filter((item) => item.id !== id);
+        setClients(filteredClients);
+      }
+    });
   };
 
   const handleEditClient = (id, data) => {
@@ -74,7 +70,6 @@ export const ListClients = () => {
                 ></Client>
               </div>
             );
-
           })}
         </ul>
         <Modal

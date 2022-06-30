@@ -50,6 +50,7 @@ export const updtadeClients = (id, data) => {
   );
 };
 
+
 export const checkingAccount = (id, data) =>{
 
   
@@ -62,4 +63,23 @@ export const checkingAccount = (id, data) =>{
      }
     )
 }
+
+export const getAccounts = () => {
+  return fetch(`${baseUrl}api/v1/contaCorrente`, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+}
+
+export const deleteAccount = (id) => {
+  console.log(id);
+  return fetch(`${baseUrl}api/v1/contaCorrente/${id}`, {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+};
 
