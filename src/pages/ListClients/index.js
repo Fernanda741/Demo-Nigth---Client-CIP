@@ -1,11 +1,12 @@
 /* eslint-disable no-unused-vars */
 import { useEffect, useState } from "react";
 import { Client } from "../../Components/Client";
-import { deleteClient, getClients, updtadeClients } from "../../api/index";
-import { Modal, ModalEdit } from "../../Components/Modal";
+import { deleteClient, getClients, updtadeClients, checkingAccount } from "../../api/index";
+import { Modal, ModalEdit, ModalCheckingAccount } from "../../Components/Modal";
 import { SearchBar } from "../../Components/SearchBar";
 import ComponentMenu from "../../Components/Menu";
 import { Form } from "../../Components/Form";
+import PlusButton from '../../Components/PlusButton'
 
 
 export const ListClients = () => {
@@ -14,6 +15,7 @@ export const ListClients = () => {
   const [modalEdit, setModalEdit] = useState(false);
   const [deletingUser, setDeletingUser] = useState(-1);
   const [editClient, setEditClient] = useState("");
+  const [checkingAccount, setCheckintAccount] = useState ("")
 
   const clientEditData = clients.find((client) => client.id === editClient);
   useEffect(() => {
@@ -65,6 +67,10 @@ export const ListClients = () => {
                     setModalEdit(true);
                     setEditClient(client.id);
                   }}
+                  checkingAccount={() => {
+                    setModalEdit(true);
+                    setEditClient(client.id);
+                  }}
                 ></Client>
               </div>
             );
@@ -83,6 +89,10 @@ export const ListClients = () => {
         <ModalEdit modal={modalEdit} onClickNo={() => setModalEdit(false)}>
           <Form client={clientEditData} onSubmit={handleEditClient} />
         </ModalEdit>
+
+        <ModalCheckingAccount>
+          <Form />
+        </ModalCheckingAccount>
 
         {/* <ReactPaginate
           breakLabel="..."
