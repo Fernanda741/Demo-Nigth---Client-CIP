@@ -10,43 +10,8 @@ import ComponentMenu from "../../Components/Menu";
 import BannerImg from "../../Img/banner-register.png";
 import { useState } from "react";
 import './style.css'
+import { ToastsContainer, ToastsStore, ToastsContainerPosition } from 'react-toasts';
 
-// const FormSection = styled.form`  
-//   display: flex;
-//   width: 100%;
-//   justify-content: center;
-//   background-color: #f3f3f3;
-//   flex-wrap: wrap;
-  
-//     > input {
-//       border-radius: 3px;
-//       width: 25vw;
-//       padding: 10px;
-//     }
-
-//     > section {
-//       margin-top: 20px;
-//       margin-bottom: 20px;
-//       display: flex;
-//       justify-content: center;
-
-//       > div {
-//         display: flex;
-//         > button {
-//           margin-right: 15px;
-//           margin-left: 15px;
-//           background-color: #6acc86;
-//           font-family: "Montserrat";
-//           font-weight: bolder;
-//           border-radius: 3px;
-//           padding: 10px;
-//           border: #ababab 1px;
-//           width: 150px;
-//         }
-//       }
-//     }
-//   }
-// `;
 
 const Register = () => {
   const {
@@ -65,7 +30,8 @@ const Register = () => {
         if (response.status === 200) {
           return response.json();
         }
-        alert("Deu certo");
+        // alert("Deu certo");
+        notifyToast();
       })
       .catch((error) => {
         errors(ErrorAlert(error));
@@ -87,6 +53,10 @@ const Register = () => {
         setValue("uf", data.uf);
       });
   };
+
+  const notifyToast = () => {
+    ToastsStore.success('Cliente cadastrado com sucesso!');
+  }
 
   return (
     
@@ -192,15 +162,17 @@ const Register = () => {
             {...register("uf", { required: true })}
           />
 
-          {/* <section>
+          <section>
             <div>
               <Button title="Confirmar Cadastro" type="submit" />
               <Button ClassName title="Cancelar Cadastro" type="submit" />
             </div>
-          </section> */}
+          </section>
           {errors.uf && <p>campo obrigatório</p>}
+
         </div>
       </form>
+      <ToastsContainer store={ToastsStore} position={ToastsContainerPosition.TOP_RIGHT} />
     </section>
   );
 };
