@@ -15,6 +15,7 @@ import { FormCreateAccount } from "../../Components/FormCreateAccount";
 
 export const ListClients = () => {
   const [clients, setClients] = useState([]);
+  const [allClients, setAllClients] = useState([]);
   const [modal, setModal] = useState(false);
   const [modalEdit, setModalEdit] = useState(false);
   const [deletingUser, setDeletingUser] = useState(-1);
@@ -26,10 +27,13 @@ export const ListClients = () => {
   const clientCreateAccount = clients.find(
     (clientAccount) => clientAccount.id === clientsAccount
   );
+
   useEffect(() => {
     getClients()
       .then((response) => response.json())
       .then((data) => {
+        setAllClients(data.content);
+
         setClients(data.content);
       });
   }, []);
@@ -58,11 +62,23 @@ export const ListClients = () => {
       }
     });
   };
+  const onSearch = (data) => {
+    const filteredClients = clients.filter(
+      (client) =>
+        client.nome.toUpperCase().includes(data.nome.toUpperCase()) ||
+        client.cpf === data.cpf
+    );
+    setClients(filteredClients);
+  };
+
+  const onResetSearch = () => {
+    setClients([...allClients]);
+  };
 
   return (
     <>
       <ComponentMenu />
-      <SearchBar />
+      <SearchBar onSubmit={onSearch} onReset={onResetSearch} />
       <h1 id="title">LISTA DE CLIENTES</h1>
       <section className="container-clients">
         <ul className="all-clients">
